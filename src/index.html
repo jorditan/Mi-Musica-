@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi música +</title>
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap" rel="stylesheet">
+</head>
+<body onload="document.querySelector('.bienvenida').classList.add('loaded')">
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="./index.html"><img src="../IMG/Mí música+ logo (1).png"></a>
+            </div>
+        
+            <i id="cerrar"class="fa-solid fa-xmark" style="color: #f8f0af;"></i>
+            <ul class="nav-list">
+                <li><i class="fa-solid fa-house iconNav" style="color: #000000;"></i><a href="">Inicio</a></li>
+                <li><i class="fa-solid fa-calendar-days iconNav" style="color: #000000;"></i><a href="">Décadas</a></li>
+                <li><i class="fa-solid fa-music iconNav" style="color: #000000;"></i><a href="">Géneros</a></li>
+                <li><i class="fa-solid fa-heart iconNav" style="color: #000000;"></i><a href="">Favoritos</a></li>
+            </ul>
+            
+        </nav>
+
+        <div class="navbar-responsive">
+            <i class="fa-solid fa-bars" id="abrir"></i>
+        </div>
+    </header>
+
+<main>
+
+    <div class="bienvenida">
+        <section class="inicio">
+                <h1 class="texto-inicio">Encontrá las mejores bandas
+                (60s-90s)
+                </h1>
+            
+            <div class="ver-decadas">
+                <button class ="contenedorBoton"><a href="#decadas">Ver décadas</a></button>
+            </div>
+
+        </section>
+            
+        <aside class="imagen">
+                <img src="../IMG/JimyHendirx-removebg-preview (7).png" alt="Jimmy Hendrix">
+        </aside>
+    </div>
+
+    <section class="decadas" id="decadas">
+        <div class="contenedor-decadas">   
+            <div class="tarjeta">
+                <div class="contenido-tarjeta">
+                    <h1 class="font-bold decoration-white">60s</h1>
+                    <span class="font-bold">The Beatles</span>
+
+                    <img src="https://static.independentespanol.com/s3fs-public/thumbnails/image/2019/09/17/17/the-beatles.jpg">
+                    
+                    <button class="playToogle" id="decada-60s"><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                </div>
+            </div>
+            
+            <div class="tarjeta">
+                <div class="contenido-tarjeta">
+                    <h1 class="font-bold decoration-white">70s</h1>
+                    <span class="font-bold">Sui Generis</span>
+
+                    <img src="https://minuscula211987842.files.wordpress.com/2020/09/whatsapp-image-2020-09-05-at-11.37.13.jpeg?w=1080&h=877&crop=1">
+                    
+                    <button class="playToogle"><i id="decada-70s" class="fa-solid fa-play" style="color: #000000;"></i></button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <div class="contenido-tarjeta">
+                    <h1 class="font-bold decoration-white">80s</h1>
+                    <span class="font-bold">Van Halen</span>
+
+                    <img src="https://www.delta80.com.ar/wp-content/uploads/2021/09/van-halen-charts.jpg">
+                    
+                    <button class="playToogle"><i id="decada-80s" class="fa-solid fa-play" style="color: #000000;"></i></button>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <div class="contenido-tarjeta">
+                    <h1 class="font-bold decoration-white">90s</h1>
+                    <span class="font-bold">Radiohead</span>
+
+                    <img src="https://imagenes.elpais.com/resizer/emzL-906WZ3UPCRwiL_VvkHp4l4=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/53BVJ5SD7P3BOLTKLHMFXZQXVA.jpg">
+                    
+                    <button class="playToogle"><i  id="decada-90s" class="fa-solid fa-play" style="color: #000000;"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    </main>
+
+    <footer></footer>
+    
+
+<script src="https://kit.fontawesome.com/a72fbbe819.js" crossorigin="anonymous"></script>
+<script src="../script.js" defer></script>
+
+</body>
+</html>

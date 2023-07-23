@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+
+  },
+  "dependencies": {
+    "smooth-scrollbar": "^8.8.4",
+    "type": "module"
+  }
+}
