@@ -9,16 +9,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../IMG/Icono página.png">
 </head>
 <body onload="document.querySelector('.bienvenida').classList.add('loaded')">
     
     <header>
+            <a class="logo" href="./index.html"><img src="../IMG/Mí música+ logo (1).png"></a>
         <nav class="navbar">
-            <div class="logo">
-                <a href="./index.html"><img src="../IMG/Mí música+ logo (1).png"></a>
-            </div>
-        
-            <i id="cerrar"class="fa-solid fa-xmark" style="color: #f8f0af;"></i>
+            <i id="cerrar"class="fa-solid fa-xmark" style="color: #000000;"></i>
             <ul class="nav-list">
                 <li><i class="fa-solid fa-house iconNav" style="color: #000000;"></i><a href="">Inicio</a></li>
                 <li><i class="fa-solid fa-calendar-days iconNav" style="color: #000000;"></i><a href="">Décadas</a></li>
@@ -48,7 +46,7 @@
         </section>
             
         <aside class="imagen">
-                <img src="../IMG/JimyHendirx-removebg-preview (7).png" alt="Jimmy Hendrix">
+                <img id="imagen" src="../IMG/JimyHendirx-removebg-preview (7).png" alt="Jimmy Hendrix">
         </aside>
     </div>
 
@@ -61,7 +59,10 @@
 
                     <img src="https://static.independentespanol.com/s3fs-public/thumbnails/image/2019/09/17/17/the-beatles.jpg">
                     
-                    <button class="playToogle" id="decada-60s"><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                    <div class="botones">
+                        <button class="playToogle"><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                        <button class="next" id="60s"><i class="fa-solid fa-forward" style="color: #00661f;"></i></button>
+                    </div>
                 </div>
             </div>
             
@@ -72,7 +73,10 @@
 
                     <img src="https://minuscula211987842.files.wordpress.com/2020/09/whatsapp-image-2020-09-05-at-11.37.13.jpeg?w=1080&h=877&crop=1">
                     
-                    <button class="playToogle"><i id="decada-70s" class="fa-solid fa-play" style="color: #000000;"></i></button>
+                    <div class="botones">
+                        <button class="playToogle"><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                        <button class="next" id="70s"><i class="fa-solid fa-forward" style="color: #00661f;"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -82,8 +86,12 @@
                     <span class="font-bold">Van Halen</span>
 
                     <img src="https://www.delta80.com.ar/wp-content/uploads/2021/09/van-halen-charts.jpg">
+
+                <div class="botones">
+                    <button class="playToogle" ><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                    <button class="next" id="80s"><i class="fa-solid fa-forward" style="color: #00661f;"></i></button>
+                </div>
                     
-                    <button class="playToogle"><i id="decada-80s" class="fa-solid fa-play" style="color: #000000;"></i></button>
                 </div>
             </div>
 
@@ -94,7 +102,10 @@
 
                     <img src="https://imagenes.elpais.com/resizer/emzL-906WZ3UPCRwiL_VvkHp4l4=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/53BVJ5SD7P3BOLTKLHMFXZQXVA.jpg">
                     
-                    <button class="playToogle"><i  id="decada-90s" class="fa-solid fa-play" style="color: #000000;"></i></button>
+                    <div class="botones">
+                        <button class="playToogle"><i class="fa-solid fa-play" style="color: #000000;"></i></button>
+                        <button class="next" id="90s"><i class="fa-solid fa-forward" style="color: #00661f;"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -107,7 +118,8 @@
     
 
 <script src="https://kit.fontawesome.com/a72fbbe819.js" crossorigin="anonymous"></script>
-<script src="../script.js" defer></script>
+<script src="../JS/script.js" defer></script>
+<script src="../JS/header.js" defer></script>
 
 </body>
 </html>
