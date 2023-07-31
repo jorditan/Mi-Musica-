@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    font-family: 'League Spartan', sans-serif;
+    box-sizing: border-box;
+}
+body,html{height:100%; width: 100%;overflow-x:hidden; scroll-behavior: smooth;}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    display: flex;
+    background: #2B9E4B 0%;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+
+.logo {
+    max-width: 10rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.navbar i {
+    font-size: 20px;
+}
+
+.dropdown {
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.dropdown li {
+    display: flex; margin: 40px; flex-direction: row; align-items: center; justify-content: center;
+}
+
+
+.dropdown li p {
+    color:#fff; transition:.5s all ease; font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropdown li i {
+    padding-left: 7px;
+}
+
+.dropdown li p:hover {
+    font-size: 22px;
+}
+
+
+.contenido-dropdown {
+    display: flex;
+    z-index: 10;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.navbar-responsive {
+    display: none;
+}
+
+.fa-solid.fa-caret-up {
+    font-size: 12px;
+}
+.dropdown-generos {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151414;
+    width: 5em;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.51);
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.dropdown-generos li a{
+    transition: all ease 1s;
+    color: #FFF;
+}
+
+.dropdown-decadas {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151414;
+    width: 6em;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.51);
+    opacity: 0;
+    visibility: hidden;
+    padding: 10px;
+}
+
+.dropdown-decadas li a{
+    transition: all ease 1s;
+    color: #FFF;
+}
+
+#cerrar {display: none;}
+
+.nav-list{list-style-type:none;gap:1em; display: flex; align-items: center; width: 100%; justify-content: center; }
+.nav-list li a{text-decoration:none;color:#fff;transition:.5s; font-size: 20px;}
+.fa-solid {font-size: 10px; margin-right: 8px;}
+ul.nav-list li {display: flex; margin: 40px; flex-direction: row; align-items: center;}
+header li a:hover {font-size: 22px;}
+
+.contenedor-dropdown {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media screen and (max-width: 950px ) {
+    .navbar-responsive {
+        display: block;
+    }
+
+    .navbar {
+        z-index: 3;
+        opacity: 0;
+        visibility: hidden;
+        flex-direction: row;
+        width: 30%;
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 100.50%);
+        box-shadow: 0px 0px 0px 100vmax rgba(0, 0, 0, 0.51);
+    }
+
+    .nav-list {
+        height: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    ul.nav-list li {
+        margin: 0;
+        padding-top: 40px;
+    }
+
+    .nav-list li a{
+        font-size: 30px;
+    }
+
+    .nav-list li a:hover {font-size: 28px}
+    .nav-list li a {font-size: 25px;}
+
+
+    .navbar.visible {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        padding: 30px;
+    }
+    
+
+    #cerrar {
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 474px) {   
+    .navbar {
+        width: 50%;
+    } 
+}
+

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi música +</title>
     <link rel="stylesheet" href="./output.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../CSS/header.css">
+    <link rel="stylesheet" href="../CSS/styles.css"
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../IMG/Icono página.png">
 </head>
@@ -19,10 +20,38 @@
             <i id="cerrar"class="fa-solid fa-xmark" style="color: #000000;"></i>
             <ul class="nav-list">
                 <li><i class="fa-solid fa-house iconNav" style="color: #000000;"></i><a href="">Inicio</a></li>
-                <li><i class="fa-solid fa-calendar-days iconNav" style="color: #000000;"></i><a href="">Décadas</a></li>
-                <li><i class="fa-solid fa-music iconNav" style="color: #000000;"></i><a href="">Géneros</a></li>
                 <li><i class="fa-solid fa-heart iconNav" style="color: #000000;"></i><a href="">Favoritos</a></li>
             </ul>
+
+        <div class="contenedor-dropdown">
+            
+            <ul class="dropdown">
+                <li>
+                    <i class="fa-solid fa-calendar-days" style="color: #000000;">
+                    </i>
+                    <p id="boton-decadas">Décadas <i class="fa-solid fa-caret-up" style="color: #ffffff;"></i></p></li>
+
+                <li>
+                    <i class="fa-solid fa-music" style="color: #000000;"></i>
+                    <p id="boton-generos">Géneros <i class="fa-solid fa-caret-up" style="color: #ffffff;"></i></p>
+                </li>
+            </ul>
+
+            <div class="contenido-dropdown">
+                    <ul class="dropdown-decadas">
+                        <li><a href="">60s</a></li>
+                        <li><a href="">70s</a></li>
+                        <li><a href="">80s</a></li>
+                        <li><a href="">90s</a></li>
+                    </ul>
+
+                    <ul class="dropdown-generos">
+                        <li><a href="">Rock</a></li>
+                        <li><a href="">Pop</a></li>
+                        <li><a href="">Blues</a></li>
+                    </ul>
+            </div>
+        </div>
             
         </nav>
 

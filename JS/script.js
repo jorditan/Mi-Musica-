@@ -30,10 +30,7 @@ const canciones = [
 
 //Elegir cancion aleatoria de cada década
 const playToogleButtons = document.querySelectorAll('.playToogle');
-console.log(playToogleButtons);
-
 const nextButtons = document.querySelectorAll('.next');
-console.log(nextButtons);
 
 let estaSonando = false;
 
@@ -71,7 +68,6 @@ function reproducirOtraCancion(boton) {
     estaSonando = true;
     let cancionesDecada;
     const decada = boton.closest('.next').getAttribute('id');
-    console.log(decada);
 
     // CAMBIAR CANCION DEPENDIENDO DE DÉCADA
 
@@ -94,7 +90,6 @@ function reproducirOtraCancion(boton) {
 
     const datoRandom = generarDatoRandom(cancionesDecada, decada);
     cancionActual = datoRandom;
-    console.log(cancionActual);
 
     sound.src = cancionActual; // Cambiar la fuente del audio
     sound.play();
@@ -149,9 +144,6 @@ function reproducirCancionSiHaceFalta(boton) {
         default:
         return;
     }
-
-    console.log (decada);
-    console.log(decadaVieja);
 
     if (sound.src == '' || decada !== decadaVieja) {
         const nuevaCancion = generarDatoRandom(cancionesDecada, decada);
