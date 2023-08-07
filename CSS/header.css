@@ -9,6 +9,19 @@ html {
     scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+    width: 9px;
+    height: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0f0f0f;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #3BEB6C;
+}
+
 header {
     display: flex;
     background: #2B9E4B 0%;
@@ -28,7 +41,7 @@ header {
 
 .navbar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -36,42 +49,35 @@ header {
     font-size: 20px;
 }
 
-.dropdown {
-    height: 100%;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: center;
-}
-
-.dropdown li {
-    display: flex; margin: 40px; flex-direction: row; align-items: center; justify-content: center;
-}
-
-
-.dropdown li p {
-    color:#fff; transition:.5s all ease; font-size: 20px;
+#boton-generos,
+#boton-decadas {
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    font-size: 20px;
+    color: #fff;
     align-items: center;
+    transition: all ease .5s;
 }
 
-.dropdown li i {
-    padding-left: 7px;
-}
-
-.dropdown li p:hover {
+#boton-generos:hover,
+#boton-decadas:hover {
     font-size: 22px;
 }
 
-
-.contenido-dropdown {
+.contenedorGeneros,
+.contenedorDecadas {
     display: flex;
-    z-index: 10;
-    width: 100%;
-    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .navbar-responsive {
@@ -80,58 +86,50 @@ header {
 
 .fa-solid.fa-caret-up {
     font-size: 12px;
+    margin-left: 5px;
 }
-.dropdown-generos {
-    flex-direction: column;
+
+.dropdown-generos,
+.dropdown-decadas {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    height: auto;
+    top: 80%; 
+    z-index: 10;
     background-color: #151414;
     width: 5em;
     border-radius: 5px;
     box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.51);
-    opacity: 0;
-    visibility: hidden;
+    display: none;
 }
 
-
+.dropdown-decadas li a,
 .dropdown-generos li a{
-    transition: all ease 1s;
-    color: #FFF;
-}
-
-.dropdown-decadas {
-    flex-direction: column;
+    margin: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #151414;
-    width: 6em;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.51);
-    opacity: 0;
-    visibility: hidden;
-    padding: 10px;
 }
 
-.dropdown-decadas li a{
-    transition: all ease 1s;
-    color: #FFF;
+
+.item {
+    margin: 40px;
 }
+
+
 
 #cerrar {display: none;}
 
-.nav-list{list-style-type:none;gap:1em; display: flex; align-items: center; width: 100%; justify-content: center; }
+.nav-list{list-style-type:none;gap:1em; display: flex; align-items: center; width: 100%; justify-content: center; height: 100%;position: relative; }
 .nav-list li a{text-decoration:none;color:#fff;transition:.5s; font-size: 20px;}
 .fa-solid {font-size: 10px; margin-right: 8px;}
-ul.nav-list li {display: flex; margin: 40px; flex-direction: row; align-items: center;}
+ul.nav-list li {display: flex; align-items: center;}
 header li a:hover {font-size: 22px;}
 
-.contenedor-dropdown {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
+
 
 @media screen and (max-width: 950px ) {
     .navbar-responsive {
@@ -151,28 +149,40 @@ header li a:hover {font-size: 22px;}
         top: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 100.50%);
+        background: #2B9E4B;
         box-shadow: 0px 0px 0px 100vmax rgba(0, 0, 0, 0.51);
     }
 
     .nav-list {
-        height: 100%;
         flex-direction: column;
         align-items: flex-end;
+        position: relative;
+        justify-content: space-evenly;
     }
 
     ul.nav-list li {
         margin: 0;
-        padding-top: 40px;
+        padding-top: 0px;
     }
 
-    .nav-list li a{
-        font-size: 30px;
+    .nav-list li a:hover {
+        font-size: 22px
+    }
+    .nav-list li a {
+        font-size: 25px;
     }
 
-    .nav-list li a:hover {font-size: 28px}
-    .nav-list li a {font-size: 25px;}
+    .dropdown-decadas,
+    .dropdown-generos {
+        position: relative;
+        height: auto;
+        top: 0;
+    }
 
+    .dropdown-decadas li,
+    .dropdown-generos li {
+        margin: 0;
+    }
 
     .navbar.visible {
         opacity: 1;
@@ -180,13 +190,18 @@ header li a:hover {font-size: 22px;}
         display: flex;
         padding: 30px;
     }
-    
 
     #cerrar {
         font-size: 2.5rem;
         display: flex;
         justify-content: center;
     }
+
+    #boton-generos,
+    #boton-decadas {
+        font-size: 25px;
+    }
+
 }
 
 @media screen and (max-width: 474px) {   

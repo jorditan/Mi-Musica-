@@ -1,0 +1,129 @@
+.tarjetasCanciones {
+    background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 91.15%);
+    height: 100vh;
+    padding-top: 10px;
+}
+
+
+.textoInicio h5{
+    font-size: 4.5em;
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+
+.contenedorTarjetas {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.tarjeta {
+    width: 35%;
+    height: 40%;
+    flex-shrink: 0;
+    background-color: #FFF;
+    margin: 0px 20px 0px 20px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.51);
+    transition: .5s all ease;
+    margin-top: 20px;
+}
+
+.tarjeta:nth-child(odd) {
+    justify-content: flex-start;
+}
+
+/* Estilo para las tarjetas pares (derecha) */
+.tarjeta:nth-child(even) {
+    margin-left: auto;
+}
+
+.tarjeta:nth-child(odd):hover {
+    transform: translateX(20px);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.81);
+}
+
+/* Efecto hover para las tarjetas pares (derecha) */
+.tarjeta:nth-child(even):hover {
+    transform: translateX(-20px);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.81);
+}
+
+.imagen {
+    height: 100%;
+    width: 55%;
+}
+
+.imagen img {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+.infoTarjeta {
+    display: flex;
+    width: auto;
+    justify-content: flex-start;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.infoTarjeta h4{
+    line-height: normal;
+}
+
+.botones {
+    display: flex;
+    align-items: center;
+    height: auto;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.fa-play,
+.fa-forward {
+    font-size: 30px;
+    margin-right: 0;
+    margin: 4px;
+    transition: .5s all ease;
+}
+
+.fa-play:hover,
+.fa-forward:hover {
+    transform: translateY(-10px);
+}
+
+#nombreCancion {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #2B9E4B;
+}
+
+.section2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    height: 100vh;
+    background: radial-gradient(110.93% 107.15% at 38.61% 124.27%, #59FF88 21.36%, #59FF88 45.25%, #FFF 87.50%);
+}
+
+.section3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: #59FF88;
+    padding-bottom: 3em;
+}
