@@ -119,8 +119,7 @@ header {
     margin: 40px;
 }
 
-
-
+#abrir {font-size: 30px;}
 #cerrar {display: none;}
 
 .nav-list{list-style-type:none;gap:1em; display: flex; align-items: center; width: 100%; justify-content: center; height: 100%;position: relative; }

@@ -1,6 +1,7 @@
 .tarjetasCanciones {
+    flex-direction: column;
+    display: flex;
     background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 91.15%);
-    height: 100vh;
     padding-top: 10px;
 }
 
@@ -18,12 +19,12 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    justify-content: flex-end;
+    height: auto;
 }
 
 .tarjeta {
-    width: 35%;
-    height: 40%;
+    width: 40%;
+    height: 17rem;
     flex-shrink: 0;
     background-color: #FFF;
     margin: 0px 20px 0px 20px;
@@ -57,7 +58,6 @@
 }
 
 .imagen {
-    height: 100%;
     width: 55%;
 }
 
@@ -111,19 +111,70 @@
 }
 
 .section2 {
-    width: 100%;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    height: 100vh;
+    padding-top: 10px;
     background: radial-gradient(110.93% 107.15% at 38.61% 124.27%, #59FF88 21.36%, #59FF88 45.25%, #FFF 87.50%);
+    padding-top: 3em;
 }
 
 .section3 {
-    width: 100%;
+    flex-direction: column;
     display: flex;
-    justify-content: center;
-    height: 100vh;
+    padding-top: 10px;
     background: #59FF88;
     padding-bottom: 3em;
+    padding-top: 3em;
 }
+
+@media screen and (max-width:1124px){
+    .tarjeta {
+        width: 50%;
+        height: 40%;
+    }
+    .contenedorTarjetas {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width:915px){
+    .tarjeta {
+        width: 60%;
+    }
+    .tarjetasCanciones {
+        height: auto;
+    }
+}
+
+@media screen and (max-width:674px){
+    .contenedorTarjetas {
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .tarjeta:nth-child(even) {
+        margin-left: initial;
+    }
+    .tarjeta {
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:460px){
+    .tarjeta {
+        width: 80%;
+    }
+
+    .tarjeta h4{
+        font-size: 2.5em;
+    }
+
+    #nombreCancion {
+        font-size: 1em;
+    }
+
+}
+
+
