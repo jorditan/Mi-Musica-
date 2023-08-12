@@ -1,0 +1,238 @@
+body {
+    height: 100%;
+}
+
+.inicio {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.texto-inicio {
+    font-size: 6rem;
+    font-weight: 900;
+    width: 100%;
+    display: flex;
+    padding-left: 16px;
+    padding-top: 16px;
+    opacity: 0; 
+    transition: all ease 1s;
+}
+
+.bienvenida.loaded .texto-inicio {
+    opacity: 1;
+}
+
+.ver-decadas {
+    margin-left: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+.contenedorBoton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: black;
+    width: 120px;
+    height: 60px;
+    transition: all ease 0.5s;
+    animation: slideIn 1s ease forwards;
+}
+
+.contenedorBoton a {
+    font-size: 20px;
+    color: white;
+}
+
+.contenedorBoton:hover {
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.51);
+    background: transparent;
+    box-shadow: none;
+    border: solid 1px #0f0f0f;
+}
+
+.contenedorBoton a:hover {
+    color: #0f0f0f;
+}
+
+
+.bienvenida {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 91.15%);
+}
+
+.imagen {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    transition: 1s ease;
+}
+
+.imagen img {
+    width: 100%;
+    height: 680px;
+    animation: slideIn 1s ease forwards;
+}
+
+.imagen:hover {
+    transform: translateX(-80px);
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(100%); } /* Empieza desde abajo */
+    100% { transform: translateY(0); } /* Desliza hacia arriba */
+}
+
+.slide-element {
+    opacity: 0; /* Inicialmente, establece la opacidad en 0 */
+    animation: slideIn 1s ease; /* Duración de 1 segundo con aceleración suave */
+}
+
+.decadas {
+    height: 100vh;
+    background: radial-gradient(67.06% 45.66% at 4.34% 100.00%, #59FF88 0%, #59FF88 35.42%, #FFF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-decadas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 80px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.tarjeta {
+    width: 280px;
+    height: 255px;
+    border-radius: 38px;
+    background: rgb(2,0,36);
+    background: linear-gradient(355deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(44,251,130,1) 65%);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.51);
+    display: flex;
+    transition: 1s all ease;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenido-tarjeta {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contenido-tarjeta a{
+    text-decoration: none;
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+    display: flex;
+    height: 30%;
+    transition: all ease .5s
+}
+
+.contenido-tarjeta a:hover {
+    color: #0f0f0f;
+    font-size: 4.5rem;
+}
+
+
+
+.tarjeta:hover {
+    transform: translateY(-30px);
+}
+
+.fa-solid {
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-right: 8px;
+    padding-top: 10px;
+}
+
+
+.tarjeta img {
+    width: 50%;
+    height: 50%;
+    border-radius: 20px;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 950px ) {
+    .bienvenida {
+        flex-direction: column;
+    }
+
+    .inicio {
+        height: auto;
+    }
+    .imagen {
+        height: 50vh;
+    }
+    .imagen img {
+        height: auto;
+        width: 80%;
+    }
+    .ver-decadas {
+        padding-top: 0;
+    }
+
+    .texto-inicio {
+        font-size: 5.5rem;
+    }
+    .contenedor-decadas {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .decadas {
+        height: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 622px) {
+    .texto-inicio {
+        font-size: 5rem;
+    }
+    .inicio {
+        height: 40vh;
+    }
+
+    .imagen {
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 474px) {   
+    .texto-inicio {
+        font-size: 4.5rem;
+    }
+    .inicio {
+        height: 100%;
+    }
+
+    .imagen {
+        height: 40vh;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
