@@ -22,32 +22,38 @@ const bandas = [
     {
         nombre: 'The Beatles',
         audio: ['../Sound/If I Fell.mp3', '../Sound/Im Happy Just To Dance With You.mp3', '../Sound/Helter Skelter.mp3', '../Sound/Help!.mp3', '../Sound/Across The Universe.mp3'],
+        genero: 'Rock',
         id: 1,
     },
     {
         nombre: 'The Doors',
         audio: ['../Sound/LA Woman.mp3', '../Sound/Roadhouse Blues.mp3', '../Sound/Love Her Madly.mp3'],
-        id: '2'
+        genero: 'Rock',
+        id: 2
     },
     {
         nombre: 'Led Zeppelin',
         audio: ['../Sound/Baby Come on Home.mp3', '../Sound/Black Dog.mp3', '../Sound/Whole Lotta Love.mp3', '../Sound/All My Love.mp3'],
-        id: '3'
+        genero: 'Rock',
+        id: 3
     },
     {
         nombre: 'Pink Floyd',
         audio: ['../Sound/Mother.mp3', '../Sound/High Hopes.mp3','../Sound/Fearless.mp3'],
-        id: '4'
+        genero: 'Rock',
+        id: 4
     },
     {
         nombre: 'Vox Dei',
         audio: ['../Sound/Ritmo y Blues con Armónica.mp3', '../Sound/Presente.mp3', '../Sound/Profecías.mp3'],
-        id: '5'
+        genero: 'Rock',
+        id: 5
     },
     {
         nombre: 'The Rolling Stones',
         audio: ['../Sound/Gimme Shelter.mp3', '../Sound/Wild Horses.mp3','../Sound/Fool To Cry.mp3'],
-        id: '6'
+        genero: 'Rock',
+        id: 6
     },
 ]
 
@@ -65,26 +71,75 @@ let sound = new Audio();
 const cancionesBandas = bandas.map(({audio}) => audio);
 console.log(cancionesBandas);
 
-// Creo una funcion de generar una cancion aleatoria dependiendo del id de la tarjeta
-
-function generarDatoRandom(cancionesBandas) {
-    const indiceAleatorio = Math.floor(Math.random() * cancionesBandas.length);
-    return cancionesBandas[indiceAleatorio];
-}
+// Selecciono los botones y les doy las funciones necesarias
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {
-    reproducirCancion(this);
+    const idBoton = parseInt(elemento.getAttribute('id'));
+    const cancionesBanda = bandas.find(banda => banda.id === idBoton).audio;
+    console.log(cancionesBanda);
+    pausarCancion(this);
+    reproducirCancionSiHacecFalta(this);
     });
 });
 
-function reproducirCancion() {
-    const cancionesBanda = generarDatoRandom(cancionesBandas);
-    const indiceAleatorio = Math.floor(Math.random() * cancionesBanda.length);
-    sound.src = cancionesBanda[indiceAleatorio];
-    sound.play();
+nextButtons.forEach(function(elemento) {
+    elemento.addEventListener('click', function () {
+        reproducirCancionAleatoria(this);
+        sacarPausa(this);
+    })
+})
+
+// Generar canción aleatoria 
+
+function generarDatoRandom(cancionesBandas) {;
+    const cancionAleatoria = cancionesBandas[Math.floor(Math.random() * cancionesBandas.length)];
+    console.log(cancionAleatoria);
+    return cancionAleatoria;
 }
 
-// Al hacer click el boton de play se reproduce una cancion correspondiente de la década
+// Funcion para pausar la cancion
+
+function pausarCancion(button) {
+    const icon = button.querySelector('i');
+    if (sound.paused || sound.onchange) {
+            sound.play();
+            icon.classList.remove('fa-play');
+            icon.classList.add('fa-pause');
+            }
+    else {
+        sound.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+    }
+}
+
+// Funcion para reproducir una cancion aleatoria
+
+function reproducirCancionAleatoria() {
+        const cancionActual = generarDatoRandom(cancionesBandas);
+        sound.src = cancionActual;
+        sound.play();
+}
+
+function sacarPausa(boton) {
+    const botonTarjeta = boton.closest('.tarjeta').querySelector('.playToogle');
+    botonTarjeta.querySelector('i').classList.remove('fa-play');
+    botonTarjeta.querySelector('i').classList.add('fa-pause');
+}
+
+function reproducirCancionSiHacecFalta(cancionesBanda) {
+    if (sound.src === '') {
+        reproducirCancionAleatoria(cancionesBanda);
+    }
+}
+
+
+
+
+
+
+
+
 
 

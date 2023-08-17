@@ -94,8 +94,15 @@
     justify-content: center;
 }
 
-.fa-play,
 .fa-forward {
+    font-size: 30px;
+    margin-right: 0;
+    margin: 4px;
+    transition: .5s all ease;
+}
+
+.playToogle i {
+    font-size: 30px;
     font-size: 30px;
     margin-right: 0;
     margin: 4px;
