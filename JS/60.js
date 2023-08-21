@@ -57,11 +57,12 @@ const bandas = [
     },
 ]
 
-// Selecciono los botones de reproduccion y de like
+// Selecciono los botones de reproduccion, like y nombre de cancion
 
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
 const like = document.querySelectorAll('.ui-like');
+const nombre = document.querySelectorAll('.nombreCancion');
 
 let estaSonando = false;
 let sound = new Audio();
@@ -69,40 +70,47 @@ let sound = new Audio();
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
 
 const cancionesBandas = bandas.map(({audio}) => audio);
-console.log(cancionesBandas);
 
 // Selecciono los botones y les doy las funciones necesarias
 
 playToogleButtons.forEach(function(elemento) {
-    elemento.addEventListener('click', function() {
+    elemento.addEventListener('click', function() {;
+    const tarjeta = elemento.closest('.tarjeta');
     const idBoton = parseInt(elemento.getAttribute('id'));
-    const cancionesBanda = bandas.find(banda => banda.id === idBoton).audio;
-    console.log(cancionesBanda);
-    pausarCancion(this);
-    reproducirCancionSiHacecFalta(this);
+    const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+    const cancionesBanda = bandaSeleccionada.audio;
+
+    ponerYSacarPausa(this);
+    cambiarBandaSiHaceFalta(idBoton, cancionesBanda);
+    imprimirNombreCancion(tarjeta);
     });
 });
 
 nextButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function () {
-        reproducirCancionAleatoria(this);
+        const tarjeta = elemento.closest('.tarjeta');
+        const idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
+        const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        const cancionesBanda = bandaSeleccionada.audio;
+
+        reproducirCancionAleatoria(cancionesBanda);
         sacarPausa(this);
     })
 })
 
-// Generar canción aleatoria 
+function cambiarBandaSiHaceFalta (idBoton, cancionesBanda) { // Funcion para cambiar los temas de la banda al hacer click en otra tarjeta
+    let idViejo = window.idViejo;
+    window.idViejo = idBoton;
 
-function generarDatoRandom(cancionesBandas) {;
-    const cancionAleatoria = cancionesBandas[Math.floor(Math.random() * cancionesBandas.length)];
-    console.log(cancionAleatoria);
-    return cancionAleatoria;
+    if (idViejo != idBoton) {
+        reproducirCancionAleatoria(cancionesBanda);
+    }
 }
 
-// Funcion para pausar la cancion
 
-function pausarCancion(button) {
+function ponerYSacarPausa(button) { // Funcion para pausar y reproducir canción
     const icon = button.querySelector('i');
-    if (sound.paused || sound.onchange) {
+    if (sound.paused) {
             sound.play();
             icon.classList.remove('fa-play');
             icon.classList.add('fa-pause');
@@ -114,32 +122,41 @@ function pausarCancion(button) {
     }
 }
 
-// Funcion para reproducir una cancion aleatoria
+function reproducirCancionAleatoria(canciones) { // Funcion para reproducir la cancion aleatoria
+    const cancionActual = generarDatoRandom(canciones);
+    obtenerNombreCancion(cancionActual);
 
-function reproducirCancionAleatoria() {
-        const cancionActual = generarDatoRandom(cancionesBandas);
-        sound.src = cancionActual;
-        sound.play();
+    sound.src = cancionActual;
+    sound.play();
+    estaSonando = true;
 }
 
-function sacarPausa(boton) {
+function generarDatoRandom(canciones) { // Generar canción aleatoria 
+    indice = Math.floor(Math.random() * canciones.length);
+    const cancionAleatoria = canciones[indice];
+    return cancionAleatoria;
+}
+
+function obtenerNombreCancion(cancionActual) { // Obtiene el nombre de la canción que se reproduce 
+    const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
+    console.log(nombreCancionActual);
+    return nombreCancionActual;
+}
+
+function imprimirNombreCancion(tarjeta, nombreCancionActual) {
+    const elementoNombre = tarjeta.querySelector('.nombreCancion');
+    elementoNombre.innerHTML = nombreCancionActual;
+}
+
+
+function sacarPausa(boton) { //Saca la pausa
     const botonTarjeta = boton.closest('.tarjeta').querySelector('.playToogle');
     botonTarjeta.querySelector('i').classList.remove('fa-play');
     botonTarjeta.querySelector('i').classList.add('fa-pause');
 }
 
-function reproducirCancionSiHacecFalta(cancionesBanda) {
-    if (sound.src === '') {
-        reproducirCancionAleatoria(cancionesBanda);
-    }
-}
+
+// Chequear que el like esté clickeado
 
 
-
-
-
-
-
-
-
-
+// Guardar la tarjeta faveada entera en el local storage
