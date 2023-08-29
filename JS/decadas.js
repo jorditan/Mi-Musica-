@@ -61,7 +61,7 @@ const bandas = [
 
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
-const like = document.querySelectorAll('.ui-like');
+const like = document.querySelectorAll('.like');
 const nombre = document.querySelectorAll('.nombreCancion');
 
 let estaSonando = false;
@@ -79,10 +79,10 @@ playToogleButtons.forEach(function(elemento) {
     const idBoton = parseInt(elemento.getAttribute('id'));
     const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
     const cancionesBanda = bandaSeleccionada.audio;
+        
 
     ponerYSacarPausa(this);
-    cambiarBandaSiHaceFalta(idBoton, cancionesBanda);
-    imprimirNombreCancion(tarjeta);
+    cambiarBandaSiHaceFalta(idBoton, cancionesBanda, tarjeta);
     });
 });
 
@@ -93,17 +93,17 @@ nextButtons.forEach(function(elemento) {
         const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         const cancionesBanda = bandaSeleccionada.audio;
 
-        reproducirCancionAleatoria(cancionesBanda);
+        reproducirCancionAleatoria(cancionesBanda, tarjeta);
         sacarPausa(this);
     })
 })
 
-function cambiarBandaSiHaceFalta (idBoton, cancionesBanda) { // Funcion para cambiar los temas de la banda al hacer click en otra tarjeta
+function cambiarBandaSiHaceFalta (idBoton, cancionesBanda, tarjeta) { // Funcion para cambiar los temas de la banda al hacer click en otra tarjeta
     let idViejo = window.idViejo;
     window.idViejo = idBoton;
 
     if (idViejo != idBoton) {
-        reproducirCancionAleatoria(cancionesBanda);
+        reproducirCancionAleatoria(cancionesBanda, tarjeta);
     }
 }
 
@@ -122,30 +122,33 @@ function ponerYSacarPausa(button) { // Funcion para pausar y reproducir canción
     }
 }
 
-function reproducirCancionAleatoria(canciones) { // Funcion para reproducir la cancion aleatoria
-    const cancionActual = generarDatoRandom(canciones);
-    obtenerNombreCancion(cancionActual);
-
+function reproducirCancionAleatoria(cancionesBanda, tarjeta) { // Funcion para reproducir la cancion aleatoria
+    const cancionActual = generarDatoRandom(cancionesBanda);
+    imprimirNombreCancion(obtenerNombreCancion(cancionActual), tarjeta);
     sound.src = cancionActual;
     sound.play();
     estaSonando = true;
+
+    return cancionActual;
 }
 
 function generarDatoRandom(canciones) { // Generar canción aleatoria 
     indice = Math.floor(Math.random() * canciones.length);
     const cancionAleatoria = canciones[indice];
+
     return cancionAleatoria;
 }
 
 function obtenerNombreCancion(cancionActual) { // Obtiene el nombre de la canción que se reproduce 
     const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
     console.log(nombreCancionActual);
+    
     return nombreCancionActual;
 }
 
-function imprimirNombreCancion(tarjeta, nombreCancionActual) {
+function imprimirNombreCancion(nombreCancion, tarjeta) {
     const elementoNombre = tarjeta.querySelector('.nombreCancion');
-    elementoNombre.innerHTML = nombreCancionActual;
+    elementoNombre.innerHTML = nombreCancion;
 }
 
 
@@ -158,5 +161,27 @@ function sacarPausa(boton) { //Saca la pausa
 
 // Chequear que el like esté clickeado
 
+like.forEach (function (elementoLike) {
+    elementoLike.addEventListener('click', () => {
+        const tarjeta = elementoLike.closest('.tarjeta');
+        const estaActivo = elementoLike.classList.contains('active');
+        
+        if (estaActivo) {
+            elementoLike.classList.remove('active')
+        }
+        else {
+            elementoLike.classList.add('active');
+        }
+
+        guardarEstadoLike(tarjeta.id, estaActivo)
+    }) 
+}) 
+
+// Guardar la tarjeta si está clickeado
+function guardarEstadoLike(tarjetaId, estaActivo) {
+    const estadosLikes = JSON.parse(localStorage.getItem('estadosLikes')) || {};
+    estadosLikes[tarjetaId] = estaActivo;
+    localStorage.setItem('estadosLikes', JSON.stringify(estadosLikes));
+}
 
 // Guardar la tarjeta faveada entera en el local storage

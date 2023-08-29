@@ -144,7 +144,7 @@ header li a:hover {font-size: 22px;}
         display: flex;
         align-items: flex-end;
         flex-direction: column;
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
@@ -183,7 +183,7 @@ header li a:hover {font-size: 22px;}
         margin: 0;
     }
 
-    .navbar.visible {
+    .visible {
         opacity: 1;
         visibility: visible;
         display: flex;
@@ -203,7 +203,7 @@ header li a:hover {font-size: 22px;}
 
 }
 
-@media screen and (max-width: 474px) {   
+@media screen and (max-width: 592px) {   
     .navbar {
         width: 50%;
     } 

@@ -1,0 +1,8 @@
+@import 'inicio.css';
+@import 'footer.css';
+@import 'like.css';
+@import 'header.css';
+
+.fa-solid {
+    font-size: 28px
+}
