@@ -141,7 +141,6 @@ function generarDatoRandom(canciones) { // Generar canción aleatoria
 
 function obtenerNombreCancion(cancionActual) { // Obtiene el nombre de la canción que se reproduce 
     const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
-    console.log(nombreCancionActual);
     
     return nombreCancionActual;
 }

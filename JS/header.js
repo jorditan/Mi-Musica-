@@ -27,7 +27,6 @@ botonGeneros.addEventListener('click', () => {
 
 botonDecadas.addEventListener('click', () => {
     const caret = decadas.querySelector('.fa-solid.fa-caret-up');
-    console.log(caret);
     dropdownDecadas.style.display = dropdownDecadas.style.display === 'block' ? 'none' : 'block';
     caret.classList.toggle('fa-caret-down');
 });
