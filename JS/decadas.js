@@ -58,7 +58,6 @@ const bandas = [
 ]
 
 // Selecciono los botones de reproduccion, like y nombre de cancion
-
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
 const like = document.querySelectorAll('.like');
@@ -68,21 +67,23 @@ let estaSonando = false;
 let sound = new Audio();
 
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
-
 const cancionesBandas = bandas.map(({audio}) => audio);
 
-// Selecciono los botones y les doy las funciones necesarias
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {;
-    const tarjeta = elemento.closest('.tarjeta');
-    const idBoton = parseInt(elemento.getAttribute('id'));
-    const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
-    const cancionesBanda = bandaSeleccionada.audio;
+        const tarjeta = elemento.closest('.tarjeta');
+        const idBoton = parseInt(elemento.getAttribute('id'));
+        const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        const cancionesBanda = bandaSeleccionada.audio;
         
+        /*
+            Selecciono la tarjeta, el ID y las canciones de la banda
+            correspondiente a la tarjeta clickeada
+        */
 
-    ponerYSacarPausa(this);
-    cambiarBandaSiHaceFalta(idBoton, cancionesBanda, tarjeta);
+        ponerYSacarPausa(this, cancionesBanda, tarjeta);
+
     });
 });
 
@@ -93,34 +94,47 @@ nextButtons.forEach(function(elemento) {
         const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         const cancionesBanda = bandaSeleccionada.audio;
 
+        /*
+            Selecciono la tarjeta, el ID y las canciones de la banda
+            correspondiente a la tarjeta clickeada
+        */
+
         reproducirCancionAleatoria(cancionesBanda, tarjeta);
-        sacarPausa(this);
+        sacarPausa(tarjeta.querySelector('.play'));
     })
 })
 
-function cambiarBandaSiHaceFalta (idBoton, cancionesBanda, tarjeta) { // Funcion para cambiar los temas de la banda al hacer click en otra tarjeta
-    let idViejo = window.idViejo;
-    window.idViejo = idBoton;
+function ponerYSacarPausa(button, cancionesBanda, tarjeta) { 
+    /*
+        Esta funcion se encarga da sacar y poner la pausa. Además, en caso de que el audio 
+        es nulo, se encarga de reproducir una canción.
+    */
 
-    if (idViejo != idBoton) {
-        reproducirCancionAleatoria(cancionesBanda, tarjeta);
+    const icono = button.querySelector('i');
+    if (sound.src == '') {
+        reproducirCancionAleatoria(cancionesBanda, tarjeta)
+        sacarPausa(icono);
     }
-}
-
-
-function ponerYSacarPausa(button) { // Funcion para pausar y reproducir canción
-    const icon = button.querySelector('i');
-    if (sound.paused) {
-            sound.play();
-            icon.classList.remove('fa-play');
-            icon.classList.add('fa-pause');
-            }
+    else if (sound.paused) {
+        sound.play();
+        sacarPausa(icono)
+    }
     else {
         sound.pause();
-        icon.classList.remove('fa-pause');
-        icon.classList.add('fa-play');
+        sacarPlay(icono);
     }
 }
+const sacarPausa = (icono) => {
+    icono.classList.remove('fa-play');
+    icono.classList.add('fa-pause');
+}
+
+const sacarPlay = (icono) => {
+    icono.classList.remove('fa-pause');
+    icono.classList.add('fa-play');
+}
+
+
 
 function reproducirCancionAleatoria(cancionesBanda, tarjeta) { // Funcion para reproducir la cancion aleatoria
     const cancionActual = generarDatoRandom(cancionesBanda);
@@ -149,14 +163,6 @@ function imprimirNombreCancion(nombreCancion, tarjeta) {
     const elementoNombre = tarjeta.querySelector('.nombreCancion');
     elementoNombre.innerHTML = nombreCancion;
 }
-
-
-function sacarPausa(boton) { //Saca la pausa
-    const botonTarjeta = boton.closest('.tarjeta').querySelector('.playToogle');
-    botonTarjeta.querySelector('i').classList.remove('fa-play');
-    botonTarjeta.querySelector('i').classList.add('fa-pause');
-}
-
 
 // Chequear que el like esté clickeado
 

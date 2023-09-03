@@ -52,8 +52,8 @@ function generarDatoRandom(cancionesDecadas) {
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {
-    reproducirCancionSiHaceFalta(this);
-    pausarCancion (this);
+        reproducirCancionSiHaceFalta(this);
+        pausarCancion (this);
     });
 });
 
