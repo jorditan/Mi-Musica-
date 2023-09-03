@@ -65,6 +65,7 @@ const nombre = document.querySelectorAll('.nombreCancion');
 
 let estaSonando = false;
 let sound = new Audio();
+let id = [];
 
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
 const cancionesBandas = bandas.map(({audio}) => audio);
@@ -72,9 +73,10 @@ const cancionesBandas = bandas.map(({audio}) => audio);
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {;
-        const tarjeta = elemento.closest('.tarjeta');
-        const idBoton = parseInt(elemento.getAttribute('id'));
-        const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let tarjeta = elemento.closest('.tarjeta');
+        let idBoton = parseInt(elemento.getAttribute('id'));
+        id.push(idBoton);
+        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         const cancionesBanda = bandaSeleccionada.audio;
         
         /*
@@ -83,17 +85,18 @@ playToogleButtons.forEach(function(elemento) {
         */
 
         ponerYSacarPausa(this, cancionesBanda, tarjeta);
-
+        cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta);
     });
 });
 
+
 nextButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function () {
-        const tarjeta = elemento.closest('.tarjeta');
-        const idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
-        const bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let tarjeta = elemento.closest('.tarjeta');
+        let idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
+        id.push(idBoton);
+        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         const cancionesBanda = bandaSeleccionada.audio;
-
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
             correspondiente a la tarjeta clickeada
@@ -109,9 +112,8 @@ function ponerYSacarPausa(button, cancionesBanda, tarjeta) {
         Esta funcion se encarga da sacar y poner la pausa. Además, en caso de que el audio 
         es nulo, se encarga de reproducir una canción.
     */
-
     const icono = button.querySelector('i');
-    if (sound.src == '') {
+    if (sound.src === '') {
         reproducirCancionAleatoria(cancionesBanda, tarjeta)
         sacarPausa(icono);
     }
@@ -134,16 +136,24 @@ const sacarPlay = (icono) => {
     icono.classList.add('fa-play');
 }
 
+function cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta) {
+    let idViejo = id[id.length -2];
+    if (idViejo !== idBoton) {
+        reproducirCancionAleatoria(cancionesBanda, tarjeta);
+    }
+}
 
-
-function reproducirCancionAleatoria(cancionesBanda, tarjeta) { // Funcion para reproducir la cancion aleatoria
+function reproducirCancionAleatoria(cancionesBanda, tarjeta) { 
+    /*
+        Esta funcion genera una cancion aleatoria y recibe su nombre, luego
+        invoca otra funcion para imprimir su nombre.
+    */
     const cancionActual = generarDatoRandom(cancionesBanda);
-    imprimirNombreCancion(obtenerNombreCancion(cancionActual), tarjeta);
+    const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
+    imprimirNombreCancion(nombreCancionActual, tarjeta);
     sound.src = cancionActual;
     sound.play();
     estaSonando = true;
-
-    return cancionActual;
 }
 
 function generarDatoRandom(canciones) { // Generar canción aleatoria 
@@ -152,14 +162,7 @@ function generarDatoRandom(canciones) { // Generar canción aleatoria
 
     return cancionAleatoria;
 }
-
-function obtenerNombreCancion(cancionActual) { // Obtiene el nombre de la canción que se reproduce 
-    const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
-    
-    return nombreCancionActual;
-}
-
-function imprimirNombreCancion(nombreCancion, tarjeta) {
+function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de la canción
     const elementoNombre = tarjeta.querySelector('.nombreCancion');
     elementoNombre.innerHTML = nombreCancion;
 }
