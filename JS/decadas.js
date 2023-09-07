@@ -127,16 +127,27 @@ function ponerYSacarPausa(button, cancionesBanda, tarjeta) {
     }
 }
 const sacarPausa = (icono) => {
+    /*
+        Esta funcion se encarga de sacar el play y poner la pausa.
+    */
     icono.classList.remove('fa-play');
     icono.classList.add('fa-pause');
 }
 
 const sacarPlay = (icono) => {
+    /*
+        Esta función se encarga de sacar la pausa y poner el play.
+    */
     icono.classList.remove('fa-pause');
     icono.classList.add('fa-play');
 }
 
 function cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta) {
+    /*
+        Esta función se ejecuta en caso de clickear en una tarjeta distinta a la
+        que se estaba reproduciendo previamente, cambiando  a las canciones
+        de la nueva banda
+    */
     let idViejo = id[id.length -2];
     if (idViejo !== idBoton) {
         reproducirCancionAleatoria(cancionesBanda, tarjeta);
@@ -167,7 +178,8 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
     elementoNombre.innerHTML = nombreCancion;
 }
 
-// Chequear que el like esté clickeado
+
+// ----------------------------------------------------------------------------------
 
 like.forEach (function (elementoLike) {
     elementoLike.addEventListener('click', () => {
