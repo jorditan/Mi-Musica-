@@ -179,15 +179,47 @@
     .tarjeta {
         width: 80%;
     }
-
+    .infoTarjeta {
+        align-items: flex-start;
+    }
     .tarjeta h4{
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     #nombreCancion {
-        font-size: 1em;
+        font-size: 10px;
     }
+    .botones i {
+        font-size: 22px;
+    }
+    .ui-like {
+        --icon-size: 22px;
+    }
+}
 
+@media screen and (max-width: 357px) {
+    .textoInicio h5{
+        font-size: 3em;
+    }
+    .tarjeta {
+        width: 80%;
+        height: 11rem;
+    }
+    .imagen img {
+        height: 60%;
+    }
+    .infoTarjeta h4 {
+        font-size: 2em;
+    }
+    .nombreCancion {
+        font-size: 10px;
+    }
+    .botones i {
+        font-size: 18px;
+    }
+    .ui-like {
+        --icon-size: 18px;
+    }
 }
 
 
