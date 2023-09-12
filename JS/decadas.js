@@ -33,7 +33,7 @@ const bandas = [
     },
     {
         nombre: 'Led Zeppelin',
-        audio: ['../Sound/Baby Come on Home.mp3', '../Sound/Black Dog.mp3', '../Sound/Whole Lotta Love.mp3', '../Sound/All My Love.mp3'],
+        audio: ['../Sound/Baby Come On Home.mp3', '../Sound/Black Dog.mp3', '../Sound/Whole Lotta Love.mp3', '../Sound/All My Love.mp3'],
         genero: 'Rock',
         id: 3
     },
@@ -60,7 +60,6 @@ const bandas = [
 // Selecciono los botones de reproduccion, like y nombre de cancion
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
-const like = document.querySelectorAll('.like');
 const nombre = document.querySelectorAll('.nombreCancion');
 
 let estaSonando = false;
@@ -181,27 +180,54 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
 
 // ----------------------------------------------------------------------------------
 
-like.forEach (function (elementoLike) {
-    elementoLike.addEventListener('click', () => {
-        const tarjeta = elementoLike.closest('.tarjeta');
-        const estaActivo = elementoLike.classList.contains('active');
-        
-        if (estaActivo) {
-            elementoLike.classList.remove('active')
-        }
-        else {
-            elementoLike.classList.add('active');
-        }
+/*
+    Esta seccion del código se encargar de desarrollar
+    una manera de guardar en el local storage las tarjetas con like
+*/
 
-        guardarEstadoLike(tarjeta.id, estaActivo)
-    }) 
-}) 
+const likes = document.querySelectorAll('.like');
+const tarjetas = document.querySelectorAll('.tarjeta');
+let tarjetasFaveadas = [];
+let estaClickeado = false;
 
-// Guardar la tarjeta si está clickeado
-function guardarEstadoLike(tarjetaId, estaActivo) {
-    const estadosLikes = JSON.parse(localStorage.getItem('estadosLikes')) || {};
-    estadosLikes[tarjetaId] = estaActivo;
-    localStorage.setItem('estadosLikes', JSON.stringify(estadosLikes));
+likes.forEach(function(like) {
+    like.addEventListener('click', () => {
+        let tarjeta = like.closest('.tarjeta');
+
+        favearTarjeta(tarjeta);
+        guardarTarjetaStorage(tarjetasFaveadas);
+        console.log(tarjetasFaveadas);
+    })
+})
+
+function favearTarjeta(tarjeta) {
+/*
+    Esta funcion se encarga de favear la tarjeta
+*/
+if (tarjetasFaveadas.includes(tarjeta)) {
+    // Si la tarjeta ya está en tarjetasFaveadas, la quitamos.
+    estaClickeado = false;
+    console.log(`Usted sacó el like de la tarjeta ${tarjeta.id}`);
+    tarjetasFaveadas = tarjetasFaveadas.filter(t => t !== tarjeta);
+} else {
+    // Si la tarjeta no está en tarjetasFaveadas, la agregamos.
+    estaClickeado = true;
+    console.log(`Usted le dio like a la tarjeta ${tarjeta.id}`);
+    tarjetasFaveadas.push(tarjeta);
+    }
 }
 
-// Guardar la tarjeta faveada entera en el local storage
+function guardarTarjetaStorage(tarjeta) {
+    localStorage.setItem('localTarjeta', JSON.stringify(tarjeta));
+}
+
+function obtenerFavoritos() {
+    let guardadoStorage = localStorage.getItem('localTarjeta');
+    if (guardadoStorage == null) {
+        tarjetasFaveadas = [];
+    }
+    else {
+        tarjetasFaveadas = JSON.parse(guardadoStorage);
+    }
+    return tarjetasFaveadas()
+}
