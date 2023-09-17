@@ -164,10 +164,10 @@ header li a:hover {font-size: 22px;}
         padding-top: 0px;
     }
 
-    .nav-list li a:hover {
+    .item a:hover {
         font-size: 22px
     }
-    .nav-list li a {
+    .item a {
         font-size: 25px;
     }
 
@@ -207,5 +207,15 @@ header li a:hover {font-size: 22px;}
     .navbar {
         width: 50%;
     } 
+}
+
+@media screen and (max-width: 357px) {
+    .item a {
+            font-size: 20px;
+    }
+    #boton-generos,
+    #boton-decadas {
+        font-size: 20px;
+    }
 }
 

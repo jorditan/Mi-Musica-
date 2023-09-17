@@ -178,23 +178,23 @@ body {
     .bienvenida {
         flex-direction: column;
     }
-
     .inicio {
         height: auto;
     }
     .imagen {
-        height: 50vh;
+        height: 50%;
+        justify-content: flex-end;
     }
     .imagen img {
-        height: auto;
-        width: 80%;
+        height: 100%;
+        width: 50%;
     }
     .ver-decadas {
         padding-top: 0;
     }
 
     .texto-inicio {
-        font-size: 5.5rem;
+        font-size: 5rem;
     }
     .contenedor-decadas {
         display: flex;
@@ -213,26 +213,31 @@ body {
         font-size: 5rem;
     }
     .inicio {
-        height: 40vh;
+        height: 50vh;
     }
 
     .imagen {
-        height: 60vh;
+        height: 50vh;
+        justify-content: flex-end;
+        align-items: center;
     }
 }
 
 @media screen and (max-width: 474px) {   
     .texto-inicio {
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
     .inicio {
         height: 100%;
     }
 
     .imagen {
-        height: 40vh;
+        height: 60vh;
         width: 100%;
         justify-content: flex-end;
+    }
+    .imagen img {
+        width: 80%;
     }
 }
 

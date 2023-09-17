@@ -76,7 +76,7 @@ playToogleButtons.forEach(function(elemento) {
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
-        const cancionesBanda = bandaSeleccionada.audio;
+        let cancionesBanda = bandaSeleccionada.audio;
         
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
@@ -95,7 +95,7 @@ nextButtons.forEach(function(elemento) {
         let idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
         id.push(idBoton);
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
-        const cancionesBanda = bandaSeleccionada.audio;
+        let cancionesBanda = bandaSeleccionada.audio;
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
             correspondiente a la tarjeta clickeada
@@ -113,7 +113,6 @@ function ponerYSacarPausa(button, cancionesBanda, tarjeta) {
     */
     const icono = button.querySelector('i');
     if (sound.src === '') {
-        reproducirCancionAleatoria(cancionesBanda, tarjeta)
         sacarPausa(icono);
     }
     else if (sound.paused) {
@@ -148,7 +147,7 @@ function cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta) {
         de la nueva banda
     */
     let idViejo = id[id.length -2];
-    if (idViejo !== idBoton) {
+    if (idViejo !== idBoton || sound.src == '') {
         reproducirCancionAleatoria(cancionesBanda, tarjeta);
     }
 }
@@ -158,8 +157,8 @@ function reproducirCancionAleatoria(cancionesBanda, tarjeta) {
         Esta funcion genera una cancion aleatoria y recibe su nombre, luego
         invoca otra funcion para imprimir su nombre.
     */
-    const cancionActual = generarDatoRandom(cancionesBanda);
-    const nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
+    let cancionActual = generarDatoRandom(cancionesBanda);
+    let nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
     imprimirNombreCancion(nombreCancionActual, tarjeta);
     sound.src = cancionActual;
     sound.play();
@@ -187,47 +186,60 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
 
 const likes = document.querySelectorAll('.like');
 const tarjetas = document.querySelectorAll('.tarjeta');
-let tarjetasFaveadas = [];
+let datosTarjetasFaveadas = [];
 let estaClickeado = false;
 
 likes.forEach(function(like) {
+    /*
+        Arego evento de like, seleccionando la tarjeta y sus datos 
+        correspondientes.
+    */
     like.addEventListener('click', () => {
         let tarjeta = like.closest('.tarjeta');
+        let datos = {
+            nombre: tarjeta.querySelector('.nombreBanda').innerHTML,
+            id: tarjeta.getAttribute('id'),
+            url: './HTML/60s.html',
+            img: tarjeta.querySelector('.imagen').getAttribute('src'),
+        }
 
-        favearTarjeta(tarjeta);
-        guardarTarjetaStorage(tarjetasFaveadas);
-        console.log(tarjetasFaveadas);
+        favearTarjeta(tarjeta, datos);
+        guardarTarjetaStorage(datosTarjetasFaveadas);
     })
 })
 
-function favearTarjeta(tarjeta) {
+function favearTarjeta (datos) {
 /*
     Esta funcion se encarga de favear la tarjeta
 */
-if (tarjetasFaveadas.includes(tarjeta)) {
-    // Si la tarjeta ya está en tarjetasFaveadas, la quitamos.
-    estaClickeado = false;
-    console.log(`Usted sacó el like de la tarjeta ${tarjeta.id}`);
-    tarjetasFaveadas = tarjetasFaveadas.filter(t => t !== tarjeta);
-} else {
-    // Si la tarjeta no está en tarjetasFaveadas, la agregamos.
-    estaClickeado = true;
-    console.log(`Usted le dio like a la tarjeta ${tarjeta.id}`);
-    tarjetasFaveadas.push(tarjeta);
+    let id = datos.id;
+
+    if (tieneDuplicados(datosTarjetasFaveadas, id)) {
+        // Si la tarjeta ya está en tarjetasFaveadas, la sacamos.
+        estaClickeado = false;
+        datosTarjetasFaveadas = datosTarjetasFaveadas.filter(item => item.id !== id);
+    } else {
+        // Si la tarjeta no está en tarjetasFaveadas, la agregamos.
+        estaClickeado = true;
+        datosTarjetasFaveadas.push(datos);
     }
 }
 
-function guardarTarjetaStorage(tarjeta) {
-    localStorage.setItem('localTarjeta', JSON.stringify(tarjeta));
+function tieneDuplicados(array, id) {
+    return array.some(item => item.id === id);
+}
+
+function guardarTarjetaStorage(datosTarjetasFaveadas) {
+    localStorage.setItem('localTarjeta', JSON.stringify(datosTarjetasFaveadas));
 }
 
 function obtenerFavoritos() {
     let guardadoStorage = localStorage.getItem('localTarjeta');
     if (guardadoStorage == null) {
-        tarjetasFaveadas = [];
+        datosTarjetasFaveadas = [];
     }
     else {
-        tarjetasFaveadas = JSON.parse(guardadoStorage);
+        datosTarjetasFaveadasarjetasFaveadas = JSON.parse(guardadoStorage);
     }
-    return tarjetasFaveadas()
+    return datosTarjetasFaveadas()
 }
