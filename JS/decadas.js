@@ -185,7 +185,6 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
 */
 
 const likes = document.querySelectorAll('.like');
-const tarjetas = document.querySelectorAll('.tarjeta');
 let datosTarjetasFaveadas = [];
 let estaClickeado = false;
 
@@ -208,7 +207,7 @@ likes.forEach(function(like) {
     })
 })
 
-function favearTarjeta (datos) {
+function favearTarjeta (tarjeta, datos) {
 /*
     Esta funcion se encarga de favear la tarjeta
 */

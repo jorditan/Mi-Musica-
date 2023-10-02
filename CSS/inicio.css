@@ -208,6 +208,34 @@ body {
     
 }
 
+@media screen and (max-height: 606px) {
+    .tarjeta {
+        height: 14em;
+        width: 18em;
+    }
+    .texto-inicio {
+        font-size: 4rem;
+    }
+    .imagen {
+        height: 90%;
+    }
+    .imagen img {
+        height: 90%;
+    }
+    .contenido-tarjeta a{
+        font-size: 3rem;
+    } 
+    .tarjeta img {
+        width: 40%;
+        height: 40%;
+    }
+    .contenido-tarjeta a:hover {
+        font-size: 3.2rem;
+    }
+}
+
+
+
 @media screen and (max-width: 622px) {
     .texto-inicio {
         font-size: 5rem;
