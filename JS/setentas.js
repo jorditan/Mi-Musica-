@@ -1,6 +1,9 @@
-import  {mostrarScroll, obtenerCancioncesBandas, playToogleButtons, nextButtons, ponerYSacarPausa, generarDatoRandom,
-reproducirCancionAleatoria, cambiarBandaSiHaceFalta, id}
-from './decadas.js';
+import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
+reproducirCancionAleatoria, cambiarBandaSiHaceFalta, sound
+}
+
+from './utils.js';
+import { mostrarScroll} from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);
 
@@ -8,50 +11,52 @@ const bandas = [
     {
         nombre: 'Sui Generis',
         id: 1,
-        audio: ['Hola'],
+        audio: ['../Sound/Necesito.mp3', '../Sound/Cuando Te Vayas.mp3', '../Sound/El fantasma de Canterville.mp3'],
         genero: 'Rock'
     },
     {
         nombre: 'AC/DC',
         id: 2,
-        audio: [],
+        audio: [''],
         genero: 'Rock'
     },
     {
         nombre: 'Blondie',
         id: 3,
-        audio: [],
+        audio: [''],
         genero: 'Rock'
     },
     {
         nombre: 'Aerosmith',
         id: 4,
-        audio: [],
+        audio: [''],
         genero: 'Rock'
     },
     {
         nombre: 'Invisible',
         id: 5,
-        audio: [],
+        audio: [''],
         genero: 'Rock progresivo'
     },
     {
         nombre: 'Ramones',
         id: 6,
-        audio: [],
+        audio: [''],
         genero: 'Rock'
     }
 ]
 
-
-const cancionesBandas = obtenerCancioncesBandas(bandas)
-console.log(cancionesBandas)
+const id = []
+const playToogleButtons = document.querySelectorAll('.playToogle2')
+const nextButtons = document.querySelectorAll('.next2')
+const nombre = document.querySelectorAll('.nombreCancion');
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {;
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
+        console.log(id)
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         console.log(cancionesBanda)
@@ -61,7 +66,7 @@ playToogleButtons.forEach(function(elemento) {
             correspondiente a la tarjeta clickeada
         */
 
-        ponerYSacarPausa(this, cancionesBanda, tarjeta);
+        ponerYSacarPausa(elemento)
         cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta);
     });
 });
@@ -70,7 +75,7 @@ playToogleButtons.forEach(function(elemento) {
 nextButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function () {
         let tarjeta = elemento.closest('.tarjeta');
-        let idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
+        let idBoton = parseInt(tarjeta.querySelector('.playToogle2').getAttribute('id'));
         id.push(idBoton);
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
@@ -78,7 +83,7 @@ nextButtons.forEach(function(elemento) {
             Selecciono la tarjeta, el ID y las canciones de la banda
             correspondiente a la tarjeta clickeada
         */
-
+        console.log(cancionesBanda)
         reproducirCancionAleatoria(cancionesBanda, tarjeta);
         sacarPausa(tarjeta.querySelector('.play'));
     })

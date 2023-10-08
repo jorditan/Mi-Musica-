@@ -220,7 +220,7 @@ body {
         height: 90%;
     }
     .imagen img {
-        height: 90%;
+        height: 100%;
     }
     .contenido-tarjeta a{
         font-size: 3rem;
