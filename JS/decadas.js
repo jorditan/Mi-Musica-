@@ -5,7 +5,7 @@ const animado = document.querySelectorAll('.animado');
 function mostrarScroll() {
     let scrollTop = document.documentElement.scrollTop;
 
-    for (i = 0; i < animado.length; i++) {
+    for (let i = 0; i < animado.length; i++) {
         let alturaAnimado = animado[i].offsetTop;
         if (alturaAnimado - 400 < scrollTop) {
             animado[i].style.opacity = 1;
@@ -67,8 +67,12 @@ let sound = new Audio();
 let id = [];
 
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
-const cancionesBandas = bandas.map(({audio}) => audio);
+function obtenerCancioncesBandas(bandas) {
+    const cancionesBandas = bandas.map(({audio}) => audio);
+    return cancionesBandas
+}
 
+const cancionesBandas = obtenerCancioncesBandas(bandas)
 
 playToogleButtons.forEach(function(elemento) {
     elemento.addEventListener('click', function() {;
@@ -77,6 +81,7 @@ playToogleButtons.forEach(function(elemento) {
         id.push(idBoton);
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
+        console.log(cancionesBanda)
         
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
@@ -166,7 +171,7 @@ function reproducirCancionAleatoria(cancionesBanda, tarjeta) {
 }
 
 function generarDatoRandom(canciones) { // Generar canción aleatoria 
-    indice = Math.floor(Math.random() * canciones.length);
+    let indice = Math.floor(Math.random() * canciones.length);
     const cancionAleatoria = canciones[indice];
 
     return cancionAleatoria;
@@ -242,3 +247,7 @@ function obtenerFavoritos() {
     }
     return datosTarjetasFaveadas()
 }
+
+
+export {cancionesBandas, mostrarScroll, obtenerCancioncesBandas, playToogleButtons, nextButtons, ponerYSacarPausa,
+cambiarBandaSiHaceFalta, sacarPausa, reproducirCancionAleatoria, id, generarDatoRandom, imprimirNombreCancion}
