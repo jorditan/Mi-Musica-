@@ -5,7 +5,7 @@ const animado = document.querySelectorAll('.animado');
 function mostrarScroll() {
     let scrollTop = document.documentElement.scrollTop;
 
-    for (i = 0; i < animado.length; i++) {
+    for (let i = 0; i < animado.length; i++) {
         let alturaAnimado = animado[i].offsetTop;
         if (alturaAnimado - 400 < scrollTop) {
             animado[i].style.opacity = 1;
@@ -61,13 +61,13 @@ const bandas = [
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
 const nombre = document.querySelectorAll('.nombreCancion');
-
-let estaSonando = false;
-let sound = new Audio();
 let id = [];
 
+import {imprimirNombreCancion, cambiarBandaSiHaceFalta, reproducirCancionAleatoria, 
+ponerYSacarPausa, sacarPausa, sacarPlay, generarDatoRandom, obtenerCancioncesBandas} 
+from  "./utils.js";
+
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
-const cancionesBandas = bandas.map(({audio}) => audio);
 
 
 playToogleButtons.forEach(function(elemento) {
@@ -76,6 +76,7 @@ playToogleButtons.forEach(function(elemento) {
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
         let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        console.log(bandaSeleccionada)
         let cancionesBanda = bandaSeleccionada.audio;
         
         /*
@@ -83,7 +84,7 @@ playToogleButtons.forEach(function(elemento) {
             correspondiente a la tarjeta clickeada
         */
 
-        ponerYSacarPausa(this, cancionesBanda, tarjeta);
+        ponerYSacarPausa(elemento);
         cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta);
     });
 });
@@ -106,76 +107,6 @@ nextButtons.forEach(function(elemento) {
     })
 })
 
-function ponerYSacarPausa(button, cancionesBanda, tarjeta) { 
-    /*
-        Esta funcion se encarga da sacar y poner la pausa. Además, en caso de que el audio 
-        es nulo, se encarga de reproducir una canción.
-    */
-    const icono = button.querySelector('i');
-    if (sound.src === '') {
-        sacarPausa(icono);
-    }
-    else if (sound.paused) {
-        sound.play();
-        sacarPausa(icono)
-    }
-    else {
-        sound.pause();
-        sacarPlay(icono);
-    }
-}
-const sacarPausa = (icono) => {
-    /*
-        Esta funcion se encarga de sacar el play y poner la pausa.
-    */
-    icono.classList.remove('fa-play');
-    icono.classList.add('fa-pause');
-}
-
-const sacarPlay = (icono) => {
-    /*
-        Esta función se encarga de sacar la pausa y poner el play.
-    */
-    icono.classList.remove('fa-pause');
-    icono.classList.add('fa-play');
-}
-
-function cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta) {
-    /*
-        Esta función se ejecuta en caso de clickear en una tarjeta distinta a la
-        que se estaba reproduciendo previamente, cambiando  a las canciones
-        de la nueva banda
-    */
-    let idViejo = id[id.length -2];
-    if (idViejo !== idBoton || sound.src == '') {
-        reproducirCancionAleatoria(cancionesBanda, tarjeta);
-    }
-}
-
-function reproducirCancionAleatoria(cancionesBanda, tarjeta) { 
-    /*
-        Esta funcion genera una cancion aleatoria y recibe su nombre, luego
-        invoca otra funcion para imprimir su nombre.
-    */
-    let cancionActual = generarDatoRandom(cancionesBanda);
-    let nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
-    imprimirNombreCancion(nombreCancionActual, tarjeta);
-    sound.src = cancionActual;
-    sound.play();
-    estaSonando = true;
-}
-
-function generarDatoRandom(canciones) { // Generar canción aleatoria 
-    indice = Math.floor(Math.random() * canciones.length);
-    const cancionAleatoria = canciones[indice];
-
-    return cancionAleatoria;
-}
-function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de la canción
-    const elementoNombre = tarjeta.querySelector('.nombreCancion');
-    elementoNombre.innerHTML = nombreCancion;
-}
-
 
 // ----------------------------------------------------------------------------------
 
@@ -185,7 +116,6 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
 */
 
 const likes = document.querySelectorAll('.like');
-const tarjetas = document.querySelectorAll('.tarjeta');
 let datosTarjetasFaveadas = [];
 let estaClickeado = false;
 
@@ -244,3 +174,6 @@ function obtenerFavoritos() {
     }
     return datosTarjetasFaveadas()
 }
+
+
+export {mostrarScroll, id}
