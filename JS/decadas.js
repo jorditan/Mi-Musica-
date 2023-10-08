@@ -205,10 +205,11 @@ likes.forEach(function(like) {
 
         favearTarjeta(tarjeta, datos);
         guardarTarjetaStorage(datosTarjetasFaveadas);
+        console.log(datosTarjetasFaveadas)
     })
 })
 
-function favearTarjeta (datos) {
+function favearTarjeta (tarjeta, datos) {
 /*
     Esta funcion se encarga de favear la tarjeta
 */

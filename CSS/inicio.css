@@ -227,12 +227,8 @@ body {
     .texto-inicio {
         font-size: 4rem;
     }
-    .inicio {
-        height: 100%;
-    }
-
     .imagen {
-        height: 60vh;
+        height: 35vh;
         width: 100%;
         justify-content: flex-end;
     }
