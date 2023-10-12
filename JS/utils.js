@@ -4,6 +4,7 @@ function obtenerCancioncesBandas(bandas) {
 }
 
 let estaSonando = false;
+
 const sound = new Audio()
 
 function ponerYSacarPausa(elemento) { 

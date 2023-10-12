@@ -1,9 +1,10 @@
 import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
 reproducirCancionAleatoria, cambiarBandaSiHaceFalta, sound
 }
-
 from './utils.js';
-import { mostrarScroll} from './sesentas.js';
+
+import { mostrarScroll, favearTarjeta, guardarTarjetaStorage, obtenerFavoritos} 
+from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);
 
@@ -17,31 +18,31 @@ const bandas = [
     {
         nombre: 'AC/DC',
         id: 2,
-        audio: [''],
+        audio: ['../Sound/You Shook Me All Night Long.mp3', '../Sound/Black Ice.mp3', '../Sound/Let There Be Rock.mp3'],
         genero: 'Rock'
     },
     {
         nombre: 'Blondie',
         id: 3,
-        audio: [''],
+        audio: ['../Sound/Maria.mp3', '../Sound/Call Me.mp3', '../Sound/Heart Of Glass.mp3'],
         genero: 'Rock'
     },
     {
         nombre: 'Aerosmith',
         id: 4,
-        audio: [''],
+        audio: ['../Sound/Dream On.mp3', '../Sound/Walk This Way.mp3', '../Sound/Make It.mp3'],
         genero: 'Rock'
     },
     {
         nombre: 'Invisible',
         id: 5,
-        audio: [''],
+        audio: ['../Sound/El Anillo Del Capitan Beto.mp3', '../Sound/Elementales Leches.mp3', '../Sound/Los Libros De La Buena Memoria.mp3'],
         genero: 'Rock progresivo'
     },
     {
         nombre: 'Ramones',
         id: 6,
-        audio: [''],
+        audio: ['../Sound/Blitzkrieg Bop.mp3', '../Sound/Pet Sementary.mp3', '../Sound/I Wanna Be Sedated.mp3'],
         genero: 'Rock'
     }
 ]
@@ -88,3 +89,29 @@ nextButtons.forEach(function(elemento) {
         sacarPausa(tarjeta.querySelector('.play'));
     })
 })
+
+// FUNCIONALIDAD LIKES PARA EL LOCAL STORAGE //
+
+const likes = document.querySelectorAll('.like-2');
+let datosTarjetasFaveadas = [];
+let estaClickeado = false;
+
+
+likes.forEach(function(like) {
+    like.addEventListener('click', function() {
+        let tarjeta = like.closest('.tarjeta');
+        let datos = {
+            nombre: tarjeta.querySelector('.nombreBanda').innerHTML,
+            id: tarjeta.getAttribute('id'),
+            url: './HTML/70s.html',
+            img: tarjeta.querySelector('.imagen').getAttribute('src'),
+        }
+
+        favearTarjeta(tarjeta, datos);
+        guardarTarjetaStorage(datosTarjetasFaveadas);
+        console.log(datosTarjetasFaveadas)
+    })
+})
+
+
+

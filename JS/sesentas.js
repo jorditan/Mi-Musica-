@@ -116,7 +116,7 @@ nextButtons.forEach(function(elemento) {
 */
 
 const likes = document.querySelectorAll('.like');
-let datosTarjetasFaveadas = [];
+let datosStorage = obtenerFavoritos();
 let estaClickeado = false;
 
 likes.forEach(function(like) {
@@ -134,8 +134,8 @@ likes.forEach(function(like) {
         }
 
         favearTarjeta(tarjeta, datos);
-        guardarTarjetaStorage(datosTarjetasFaveadas);
-        console.log(datosTarjetasFaveadas)
+        guardarTarjetaStorage(datosStorage);
+        console.log(datosStorage)
     })
 })
 
@@ -143,37 +143,37 @@ function favearTarjeta (tarjeta, datos) {
 /*
     Esta funcion se encarga de favear la tarjeta
 */
-    let id = datos.id;
+    let nombre = datos.nombre;
 
-    if (tieneDuplicados(datosTarjetasFaveadas, id)) {
+    if (tieneDuplicados(datosStorage, nombre)) {
         // Si la tarjeta ya está en tarjetasFaveadas, la sacamos.
         estaClickeado = false;
-        datosTarjetasFaveadas = datosTarjetasFaveadas.filter(item => item.id !== id);
+        datosStorage = datosStorage.filter(item => item.nombre !== nombre);
     } else {
         // Si la tarjeta no está en tarjetasFaveadas, la agregamos.
         estaClickeado = true;
-        datosTarjetasFaveadas.push(datos);
+        datosStorage.push(datos);
     }
 }
 
-function tieneDuplicados(array, id) {
-    return array.some(item => item.id === id);
+function tieneDuplicados(datosTarjetas, nombre) {
+    return datosTarjetas.some(item => item.nombre === nombre);
 }
 
-function guardarTarjetaStorage(datosTarjetasFaveadas) {
-    localStorage.setItem('localTarjeta', JSON.stringify(datosTarjetasFaveadas));
+function guardarTarjetaStorage(datosStorage) {
+    localStorage.setItem('localTarjeta', JSON.stringify(datosStorage));
 }
 
 function obtenerFavoritos() {
     let guardadoStorage = localStorage.getItem('localTarjeta');
+    let datosTarjetasFaveadas = []
     if (guardadoStorage == null) {
         datosTarjetasFaveadas = [];
     }
     else {
-        datosTarjetasFaveadasarjetasFaveadas = JSON.parse(guardadoStorage);
+        datosTarjetasFaveadas = JSON.parse(guardadoStorage);
     }
-    return datosTarjetasFaveadas()
+    return datosTarjetasFaveadas
 }
 
-
-export {mostrarScroll, id}
+export {mostrarScroll, id, favearTarjeta, tieneDuplicados, guardarTarjetaStorage, obtenerFavoritos}
