@@ -36,7 +36,7 @@ const bandas = [
     {
         id: 5,
         nombre: 'Virus',
-        audio: ['..Sound/Pronta Entrega.mp3', '../Sound/Imágenes Paganas.mp3', '../Sound/Luna de Miel en la mano.mp3'],
+        audio: ['../Sound/Pronta Entrega.mp3', '../Sound/Imágenes Paganas.mp3', '../Sound/Luna de Miel en la mano.mp3'],
         genero: 'Pop',
     },
     {
