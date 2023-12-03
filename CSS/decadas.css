@@ -181,11 +181,23 @@
         min-height: 12rem;
         margin-top: 10px;
     }
+    .botones {
+        gap: 20px;
+    }
+    .botones button i,  .ui-like {
+        font-size: 1.6em;
+    }
 }
 
 @media screen and (max-width:460px){
+    .textoInicio h5 {
+        font-size: 3.2rem;
+    }
     .tarjeta {
         width: 80%;
+    }
+    .nombreBanda {
+        width: 70%;
     }
     .infoTarjeta {
         align-items: flex-start;
@@ -196,12 +208,6 @@
 
     #nombreCancion {
         font-size: 10px;
-    }
-    .botones i {
-        font-size: 22px;
-    }
-    .ui-like {
-        --icon-size: 22px;
     }
 }
 
@@ -226,12 +232,7 @@
     .nombreCancion {
         font-size: 10px;
     }
-    .botones i {
-        font-size: 18px;
-    }
-    .ui-like {
-        --icon-size: 18px;
-    }
+    
 }
 
 

@@ -85,6 +85,9 @@ footer {
     .redes, .proyectos, .contacto {
         width: 100%;
     }
+    .iconosRed {
+        font-size: 1.5em;
+    }
 }
 
 @media screen and (max-width:621px){
