@@ -166,17 +166,20 @@
     .tarjeta:nth-child(even) {
         margin: 20px 0px 0px 0px;
     }
-    .tarjeta {
-        margin-top: 10px;
-    }
     .contenedorTarjetas {
+        gap: 30px;
         align-items: center;
         height: 100%;
         justify-content: center;
     }
+    .nombreBanda {
+        font-size: 2.5rem;
+    }
+
     .tarjeta {
         width: 80%;
-        height: auto;
+        min-height: 12rem;
+        margin-top: 10px;
     }
 }
 

@@ -63,7 +63,7 @@ body {
 .bienvenida {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(180deg, #2B9E4B 0%, #3BEB6C 21.35%, #59FF88 59.45%, #FFF 91.15%);
 }
 
@@ -96,7 +96,7 @@ body {
 }
 
 .decadas {
-    height: 100vh;
+    min-height: 100vh;
     background: radial-gradient(67.06% 45.66% at 4.34% 100.00%, #59FF88 0%, #59FF88 35.42%, #FFF 100%);
     display: flex;
     justify-content: center;
@@ -172,6 +172,13 @@ body {
 .botones {
     display: flex;
     flex-direction: row;
+}
+
+@media screen and (max-width: 1295px) {
+    .inicio {
+        width: auto;
+        height: 100vh;
+    }
 }
 
 @media screen and (max-width: 950px ) {
