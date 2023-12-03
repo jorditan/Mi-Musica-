@@ -4,6 +4,7 @@ function obtenerCancioncesBandas(bandas) {
 }
 
 let estaSonando = false;
+const cancionesReproducidas = [];
 
 const sound = new Audio()
 
@@ -62,10 +63,32 @@ function reproducirCancionAleatoria(cancionesBanda, tarjeta) {
      */
      let cancionActual = generarDatoRandom(cancionesBanda);
      let nombreCancionActual = cancionActual.split('/').pop().split('.')[0];
-     imprimirNombreCancion(nombreCancionActual, tarjeta);
-     sound.src = cancionActual;
-     sound.play();
-     estaSonando = true;
+     console.log(cancionesReproducidas[cancionesReproducidas.length -1]);
+
+     if (cancionesReproducidas[cancionesReproducidas.length -1] != cancionActual) { 
+          cancionesReproducidas.push(cancionActual);
+          imprimirNombreCancion(nombreCancionActual, tarjeta);
+          sound.src = cancionActual;
+          sound.play();
+          estaSonando = true;
+          console.log('son distintas')
+     }
+
+     else {
+          cambiarSiCancionSiRepite(cancionesReproducidas, cancionActual, cancionesBanda);
+          imprimirNombreCancion(nombreCancionActual, tarjeta);
+          sound.play();
+          estaSonando = true;
+          console.log('son iguales')
+     }
+}
+
+function cambiarSiCancionSiRepite (cancionesReproducidas, cancionActual, cancionesBanda) {
+     if (cancionesReproducidas[cancionesReproducidas.length -1] == cancionActual) {
+          cancionActual = generarDatoRandom(cancionesBanda);
+          cancionesReproducidas.push(cancionActual);
+          sound.src = cancionActual;
+     }
 }
 
  function generarDatoRandom(canciones) { // Generar canción aleatoria 

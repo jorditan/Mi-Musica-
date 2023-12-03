@@ -29,6 +29,7 @@ const canciones = [
 ]
 
 //Elegir cancion aleatoria de cada década
+
 const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.next');
 
