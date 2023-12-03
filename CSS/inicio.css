@@ -208,35 +208,40 @@ body {
         flex-direction: column;
         height: 100%;
     }
-
     .decadas {
-        height: 100%;
+        padding-top: 5em;
     }
-    
 }
+
 
 @media screen and (max-width: 622px) {
     .texto-inicio {
-        font-size: 5rem;
+        font-size: 4rem;
     }
-    .inicio {
-        height: 50vh;
-    }
-
     .imagen {
-        height: 50vh;
+        min-height: 50vh;
         justify-content: flex-end;
         align-items: center;
     }
 }
 
-@media screen and (max-width: 474px) {   
+@media screen and (max-width: 474px) { 
+    .inicio {
+        height: auto;
+    }  
     .texto-inicio {
-        font-size: 4rem;
+        font-size: 3rem;
+    }
+    .contenedorBoton {
+        width: 8em;
+        height: 3em;
+    }
+    .contenedorBoton a {
+        font-size: 17px;
     }
     .imagen {
-        height: 60vh;
-        width: 100%;
+        height: auto;
+        width: auto;
         justify-content: flex-end;
     }
     .imagen img {
