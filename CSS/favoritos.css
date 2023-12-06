@@ -54,3 +54,23 @@
      width: 100%;
      height: 100%;
 }
+
+@media screen and (max-width:873px) {
+     .tarjetaFav {
+          max-width: 100%;
+          height: 25em;
+     }
+     .contenedorImagenFaveada {
+          height: 17em;
+     }
+}
+
+@media screen and (max-width: 395px) {
+     .tituloMain {
+          font-size: 4rem;
+     }
+     
+     .nombreBanda {
+          font-size: 2rem;
+     }
+}
