@@ -165,12 +165,12 @@ header li a:hover {font-size: 22px;}
         padding-top: 0px;
     }
 
-    .item a:hover {
-        transform: scale(1.1);
-    }
-
     .nav-list li a  {
         font-size: 30px;
+    }
+
+    .nav-list li a:hover {
+        font-size: 33px;
     }
 
     .dropdown-decadas,
@@ -231,9 +231,38 @@ header li a:hover {font-size: 22px;}
 }
 
 
+@media screen and (max-width: 554px) {
+    .visible {
+        width: 80%;
+        right: 10%;
+        height: 40em;
+    }
+    .nav-list li a {
+        font-size: 22px;
+    }
+    #boton-generos,
+    #boton-decadas {
+        font-size: 22px;
+    }
+
+    #boton-generos:hover,
+    #boton-decadas:hover {
+    font-size: 24px;
+    }
+    .navbar i {
+        font-size: 24px;
+    }
+}
+
 @media screen and (max-width: 357px) {
-    .item a {
-            font-size: 20px;
+    .navbar i {
+        font-size: 20px;
+    }
+    .nav-list li a {
+        font-size: 20px;
+    }
+    .visible {
+        height: 20em;
     }
     #boton-generos,
     #boton-decadas {
