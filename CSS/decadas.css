@@ -103,10 +103,7 @@
     transition: .5s all ease;
 }
 
-.playToogle i,
-.playToogle2 i,
-.playToogle3 i,
-.playToogle4 i {
+.play {
     font-size: 30px;
     font-size: 30px;
     margin-right: 0;
@@ -189,6 +186,12 @@
     .botones button i,  .ui-like {
         font-size: 1.6em;
     }
+    .tarjeta:nth-child(odd):hover {
+        transform: translateX(0px);
+    }
+    .tarjeta:nth-child(even):hover {
+        transform: translateX(0px);
+    }
 }
 
 @media screen and (max-width:460px){
@@ -211,6 +214,13 @@
     #nombreCancion {
         font-size: 10px;
     }
+    .tarjeta:nth-child(odd):hover {
+        transform: translateX(0px);
+    }
+    .tarjeta:nth-child(even):hover {
+        transform: translateX(0px);
+    }
+    
 }
 
 @media screen and (max-width: 357px) {

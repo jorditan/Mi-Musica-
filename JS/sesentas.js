@@ -63,8 +63,8 @@ const nextButtons = document.querySelectorAll('.next');
 const nombre = document.querySelectorAll('.nombreCancion');
 let id = [];
 
-import {imprimirNombreCancion, cambiarBandaSiHaceFalta, reproducirCancionAleatoria, 
-ponerYSacarPausa, sacarPausa, sacarPlay, generarDatoRandom, obtenerCancioncesBandas} 
+import {cambiarBandaSiHaceFalta, reproducirCancionAleatoria, 
+ponerYSacarPausa, sacarPausa} 
 from  "./utils.js";
 
 // Destructuro el array de objetos para obtener las canciones de todas las bandas
@@ -129,7 +129,6 @@ likes.forEach(function(like) {
         let datos = {
             nombre: tarjeta.querySelector('.nombreBanda').innerHTML,
             id: tarjeta.getAttribute('id'),
-            url: './HTML/60s.html',
             img: tarjeta.querySelector('.imagen').getAttribute('src'),
         }
 

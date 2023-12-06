@@ -102,7 +102,6 @@ likes.forEach(function(like) {
         let datos = {
             nombre: tarjeta.querySelector('.nombreBanda').innerHTML,
             id: tarjeta.getAttribute('id'),
-            url: './HTML/70s.html',
             img: tarjeta.querySelector('.imagen').getAttribute('src'),
         }
 
