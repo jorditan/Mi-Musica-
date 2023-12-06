@@ -1,9 +1,9 @@
-import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
+import  { ponerYSacarPausa, sacarPausa,
 reproducirCancionAleatoria, cambiarBandaSiHaceFalta, sound
 }
 from './utils.js';
 
-import { mostrarScroll, favearTarjeta, guardarTarjetaStorage, obtenerFavoritos} 
+import { mostrarScroll, favearTarjeta, guardarTarjetaStorage} 
 from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);

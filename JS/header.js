@@ -12,11 +12,13 @@ const generos = document.querySelector('.contenedorGeneros');
 abrir.addEventListener('click', () => {
 	nav.classList.add("visible");
     cerrar.style.display = 'block';
+    abrir.style.display = 'none';
 });
 
 cerrar.addEventListener('click', ()=> {
     nav.classList.remove('visible');
     cerrar.style.display = 'none';
+    abrir.style.display = 'block'
 });
 
 botonGeneros.addEventListener('click', () => {

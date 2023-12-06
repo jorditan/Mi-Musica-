@@ -3,7 +3,7 @@ import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
     }
     from './utils.js';
     
-    import { mostrarScroll, favearTarjeta, guardarTarjetaStorage, obtenerFavoritos} 
+    import { mostrarScroll, favearTarjeta, guardarTarjetaStorage} 
     from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);

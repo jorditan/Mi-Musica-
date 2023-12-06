@@ -142,7 +142,7 @@ header li a:hover {font-size: 22px;}
         flex-direction: row;
         width: 30%;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         flex-direction: column;
         position: fixed;
         top: 0;
@@ -150,11 +150,12 @@ header li a:hover {font-size: 22px;}
         bottom: 0;
         background: #2B9E4B;
         box-shadow: 0px 0px 0px 100vmax rgba(0, 0, 0, 0.51);
+        transition: .3s all ease-out;
     }
 
     .nav-list {
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
         position: relative;
         justify-content: space-evenly;
     }
@@ -165,10 +166,11 @@ header li a:hover {font-size: 22px;}
     }
 
     .item a:hover {
-        font-size: 22px
+        transform: scale(1.1);
     }
-    .item a {
-        font-size: 25px;
+
+    .nav-list li a  {
+        font-size: 30px;
     }
 
     .dropdown-decadas,
@@ -184,6 +186,13 @@ header li a:hover {font-size: 22px;}
     }
 
     .visible {
+        position: fixed;
+        height: 45em;
+        border-radius: 30px;
+        width: 50%;
+        top: 10%;
+        right: 25%;
+        bottom: 25%;
         opacity: 1;
         visibility: visible;
         display: flex;
@@ -191,23 +200,36 @@ header li a:hover {font-size: 22px;}
     }
 
     #cerrar {
-        font-size: 2.5rem;
         display: flex;
-        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 50px;
+        align-items: end;
     }
 
     #boton-generos,
     #boton-decadas {
-        font-size: 25px;
+        font-size: 30px;
     }
 
+    #boton-generos:hover,
+    #boton-decadas:hover {
+    font-size: 33px;
+    }
+
+    .navbar i {
+        font-size: 30px;
+        padding-right: 15px;
+    }
+    
+    .fa-solid.fa-caret-up,
+    .fa-solid.fa-caret-down {
+        font-size: 22px;
+        padding-left: 15px;
+    }
 }
 
-@media screen and (max-width: 592px) {   
-    .navbar {
-        width: 50%;
-    } 
-}
 
 @media screen and (max-width: 357px) {
     .item a {
