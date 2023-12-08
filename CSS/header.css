@@ -90,6 +90,7 @@ header {
     margin-left: 5px;
 }
 
+
 .dropdown-generos,
 .dropdown-decadas {
     position: absolute;
@@ -127,6 +128,10 @@ header {
 .nav-list li a{text-decoration:none;color:#fff;transition:.5s; font-size: 20px;}
 ul.nav-list li {display: flex; align-items: center;}
 header li a:hover {font-size: 22px;}
+
+.fa-bars {
+    margin-right: .5em;
+}
 
 
 

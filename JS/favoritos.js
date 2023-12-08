@@ -1,8 +1,8 @@
-import { guardarTarjetaStorage, obtenerFavoritos } from "./sesentas.js";
+import { obtenerFavoritos } from "./sesentas.js";
 
 const guardadoStorage = obtenerFavoritos();
 
-const listDeFavoritos = document.getElementById('misFavs');
+const listDeFavoritos = document.querySelector('.contenedorCards');
 
 guardadoStorage.forEach(guardado => {
      const banda = document.createElement('div')
@@ -33,3 +33,4 @@ function obtenerDatos(elemento) {
      const imagen = elemento.img;
      return {nombre, imagen}
 }
+
