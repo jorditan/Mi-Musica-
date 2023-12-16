@@ -8,7 +8,7 @@ from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);
 
-const bandas = [
+const bandas70 = [
     {
         nombre: 'Sui Generis',
         id: 1,
@@ -58,7 +58,7 @@ playToogleButtons.forEach(function(elemento) {
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
         console.log(id)
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas70.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         console.log(cancionesBanda)
         
@@ -78,7 +78,7 @@ nextButtons.forEach(function(elemento) {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(tarjeta.querySelector('.playToogle2').getAttribute('id'));
         id.push(idBoton);
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas70.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
@@ -111,6 +111,8 @@ likes.forEach(function(like) {
         console.log(datosTarjetasFaveadas)
     })
 })
+
+export {bandas70}
 
 
 

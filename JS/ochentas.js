@@ -8,7 +8,7 @@ import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
 
 window.addEventListener('scroll', mostrarScroll);
 
-const bandas = [
+const bandas80 = [
     {
         id: 1,
         nombre: 'Van Halen',
@@ -58,7 +58,7 @@ playToogleButtons.forEach(function(elemento) {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas80.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         
         /*
@@ -77,7 +77,7 @@ nextButtons.forEach(function(elemento) {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(tarjeta.querySelector('.playToogle3').getAttribute('id'));
         id.push(idBoton);
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas80.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
@@ -110,3 +110,5 @@ likes.forEach(function(like) {
         console.log(datosTarjetasFaveadas)
     })
 })
+
+export {bandas80}

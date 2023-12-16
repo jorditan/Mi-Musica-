@@ -1,0 +1,19 @@
+@import './header.css';
+@import './footer.css';
+@import './decadas.css';
+
+#contenedorRock {
+     min-height: 100vh;
+     background: rgb(250, 250, 250);
+     background: linear-gradient(0deg, rgba(250, 250, 250, 1) 0%, rgba(140, 229, 165, 1) 23%, rgba(54, 212, 98, 1) 49%, rgba(43, 158, 75, 1) 100%);
+     padding: 2em;
+     display: flex;
+     flex-direction: column;
+}
+
+.titulo {
+     text-align: center;
+     font-size: 4.5rem;
+     color: #fafafa;
+     font-weight: bold;
+}

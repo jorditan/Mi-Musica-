@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Géneros</title>
+     <link rel="stylesheet" href="../src/output.css">
+     <link rel="stylesheet" href="../CSS/generos.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/png" href="../IMG/Icono página.png">
+     <script src="https://kit.fontawesome.com/a72fbbe819.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+     <header>
+          <a class="logo" href="../index.html"><img src="../IMG/Logo.png"></a>
+          <nav class="navbar">
+               <i id="cerrar" class="fa-solid fa-xmark" style="color: #303030;"></i>
+               <ul class="nav-list">
+                    <li class="item"><i class="fa-solid fa-house iconNav" style="color: #303030;"></i><a
+                              href="../index.html">Inicio</a></li>
+                    <li class="item"><i class="fa-solid fa-heart iconNav" style="color: #303030;"></i><a
+                              href="./favoritos.html">Favoritos</a></li>
+                    <li class="contenedorDecadas item">
+                         <div class="info">
+                              <i class="fa-solid fa-calendar-days" style="color: #303030;"></i>
+                              <span id="boton-decadas">Décadas<i class="fa-solid fa-caret-up"
+                                        style="color: #fafafa;"></i></span>
+                         </div>
+                         <ul class="dropdown-decadas">
+                              <li><a href="70s.html">70s</a></li>
+                              <li><a href="80s.html">80s</a></li>
+                              <li><a href="./90s.html">90s</a></li>
+                         </ul>
+                    </li>
+                    <li class="contenedorGeneros item">
+                         <div class="info">
+                              <i class="fa-solid fa-music" style="color: #303030;"></i>
+                              <span id="boton-generos">Géneros<i class="fa-solid fa-caret-up"
+                                        style="color: #fafafa;"></i></span>
+                         </div>
+                         <ul class="dropdown-generos">
+                              <li><a href="./pop.html">Pop</a></li>
+                              <li><a href="./blues.html">Blues</a></li>
+                         </ul>
+                    </li>
+               </ul>
+
+          </nav>
+
+          <div class="navbar-responsive">
+               <i class="fa-solid fa-bars" id="abrir"></i>
+          </div>
+     </header>
+
+     <main>
+          <section id="contenedorRock">
+               <h1 class="titulo">Rock</h1>
+               <div id="contenedorTarjetas">
+                    <div class="tarjeta">
+                         
+                    </div>
+               </div>
+          </section>
+     </main>
+
+     <script src="../JS/header.js" defer></script>
+     <script src="../JS/generos.js" type="module" defer></script>
+</body>
+
+</html>

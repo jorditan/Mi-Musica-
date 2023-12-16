@@ -9,7 +9,7 @@ import { mostrarScroll, favearTarjeta, guardarTarjetaStorage}
 
 window.addEventListener('scroll', mostrarScroll);
 
-const bandas = [
+const bandas90 = [
      {
           id: 1,
           nombre: 'Radiohead',
@@ -60,7 +60,7 @@ playToogleButtons.forEach(function (elemento) {
           let tarjeta = elemento.closest('.tarjeta');
           let idBoton = parseInt(elemento.getAttribute('id'));
           id.push(idBoton);
-          let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+          let bandaSeleccionada = bandas90.find(banda => banda.id === idBoton);
           let cancionesBanda = bandaSeleccionada.audio;
 
           /*
@@ -79,7 +79,7 @@ nextButtons.forEach(function (elemento) {
           let tarjeta = elemento.closest('.tarjeta');
           let idBoton = parseInt(tarjeta.querySelector('.playToogle4').getAttribute('id'));
           id.push(idBoton);
-          let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+          let bandaSeleccionada = bandas90.find(banda => banda.id === idBoton);
           let cancionesBanda = bandaSeleccionada.audio;
           /*
                Selecciono la tarjeta, el ID y las canciones de la banda
@@ -112,3 +112,5 @@ likes.forEach(function (like) {
           console.log(datosTarjetasFaveadas)
      })
 })
+
+export {bandas90}

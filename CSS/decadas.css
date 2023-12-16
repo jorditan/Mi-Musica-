@@ -84,8 +84,10 @@
     flex-direction: column;
 }
 
-.infoTarjeta h4{
+.nombreBanda {
     line-height: normal;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
 .botones {

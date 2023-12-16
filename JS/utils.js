@@ -88,6 +88,7 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
 }
 
 
+
 export {
      obtenerCancioncesBandas, imprimirNombreCancion, generarDatoRandom, reproducirCancionAleatoria,
      cambiarBandaSiHaceFalta, ponerYSacarPausa, sacarPausa, sacarPlay, sound

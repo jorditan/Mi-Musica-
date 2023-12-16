@@ -18,7 +18,7 @@ window.addEventListener('scroll', mostrarScroll);
 
 // Determino los valores de las tarjetas
 
-const bandas = [
+const bandas60 = [
     {
         nombre: 'The Beatles',
         audio: ['../Sound/If I Fell.mp3', '../Sound/Im Happy Just To Dance With You.mp3', '../Sound/Helter Skelter.mp3', '../Sound/Help!.mp3', '../Sound/Across The Universe.mp3'],
@@ -67,7 +67,7 @@ import {cambiarBandaSiHaceFalta, reproducirCancionAleatoria,
 ponerYSacarPausa, sacarPausa} 
 from  "./utils.js";
 
-// Destructuro el array de objetos para obtener las canciones de todas las bandas
+// Destructuro el array de objetos para obtener las canciones de todas las bandas60
 
 
 playToogleButtons.forEach(function(elemento) {
@@ -75,7 +75,7 @@ playToogleButtons.forEach(function(elemento) {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas60.find(banda => banda.id === idBoton);
         console.log(bandaSeleccionada)
         let cancionesBanda = bandaSeleccionada.audio;
         
@@ -95,7 +95,7 @@ nextButtons.forEach(function(elemento) {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
         id.push(idBoton);
-        let bandaSeleccionada = bandas.find(banda => banda.id === idBoton);
+        let bandaSeleccionada = bandas60.find(banda => banda.id === idBoton);
         let cancionesBanda = bandaSeleccionada.audio;
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
@@ -175,4 +175,4 @@ function obtenerFavoritos() {
     return datosTarjetasFaveadas
 }
 
-export {mostrarScroll, id, favearTarjeta, tieneDuplicados, guardarTarjetaStorage, obtenerFavoritos}
+export {mostrarScroll, id, favearTarjeta, tieneDuplicados, guardarTarjetaStorage, obtenerFavoritos, bandas60}
