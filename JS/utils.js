@@ -94,7 +94,7 @@ function cambiarBandaSiHaceFaltaGeneros(listaDeBandas, bandaActual, cancionesBan
           tarjeta diferente a la última seleccionada. Es una función distinta a la anterior
           porque esta se basa en el nombre de las bandas, no en su id.
      */
-     let ultimaBandaReproducida = listaDeBandas[listaDeBandas.length -2 ];
+     let ultimaBandaReproducida = listaDeBandas[listaDeBandas.length - 2];
      console.log(ultimaBandaReproducida);
      console.log(bandaActual);
      if (ultimaBandaReproducida !== bandaActual || sound.src == "") {
@@ -102,10 +102,7 @@ function cambiarBandaSiHaceFaltaGeneros(listaDeBandas, bandaActual, cancionesBan
      }
 }
 
-
-/* ------------- GUARDAR APARIENCIA DEL LIKE EN EL LOCAL STORAGE ----------------- */
-
 export {
      obtenerCancioncesBandas, imprimirNombreCancion, generarDatoRandom, reproducirCancionAleatoria,
-     cambiarBandaSiHaceFalta, ponerYSacarPausa, sacarPausa, sacarPlay, sound, cambiarBandaSiHaceFaltaGeneros
+     cambiarBandaSiHaceFalta, ponerYSacarPausa, sacarPausa, sacarPlay, sound, cambiarBandaSiHaceFaltaGeneros,
 }

@@ -1,5 +1,5 @@
-import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
-    reproducirCancionAleatoria, cambiarBandaSiHaceFalta, sound
+import  {ponerYSacarPausa, sacarPausa,
+    reproducirCancionAleatoria, cambiarBandaSiHaceFalta
     }
     from './utils.js';
     
@@ -7,6 +7,7 @@ import  {obtenerCancioncesBandas,  ponerYSacarPausa, sacarPausa,
     from './sesentas.js';
 
 window.addEventListener('scroll', mostrarScroll);
+
 
 const bandas80 = [
     {

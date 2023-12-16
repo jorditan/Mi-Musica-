@@ -42,7 +42,7 @@ const bandas60 = [
     },
     {
         nombre: 'Pink Floyd',
-        audio: ['../Sound/Mother.mp3', '../Sound/High Hopes.mp3','../Sound/Fearless.mp3'],
+        audio: ['../Sound/Mother.mp3', '../Sound/High Hopes.mp3', '../Sound/Fearless.mp3'],
         genero: 'Rock',
         id: 4,
         img: 'https://imagenes.elpais.com/resizer/bFHKfxYxoTuDZZALfvLzvyWKR6k=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/ICQ4BXBFXZB35MTOUNZI7R3NHA.jpg'
@@ -56,7 +56,7 @@ const bandas60 = [
     },
     {
         nombre: 'The Rolling Stones',
-        audio: ['../Sound/Gimme Shelter.mp3', '../Sound/Wild Horses.mp3','../Sound/Fool To Cry.mp3'],
+        audio: ['../Sound/Gimme Shelter.mp3', '../Sound/Wild Horses.mp3', '../Sound/Fool To Cry.mp3'],
         genero: 'Rock',
         id: 6,
         img: '../IMG/rollings.png'
@@ -69,22 +69,24 @@ const nextButtons = document.querySelectorAll('.next');
 const nombre = document.querySelectorAll('.nombreCancion');
 let id = [];
 
-import {cambiarBandaSiHaceFalta, reproducirCancionAleatoria, 
-ponerYSacarPausa, sacarPausa} 
-from  "./utils.js";
+import {
+    cambiarBandaSiHaceFalta, reproducirCancionAleatoria,
+    ponerYSacarPausa, sacarPausa
+}
+    from "./utils.js";
 
 // Destructuro el array de objetos para obtener las canciones de todas las bandas60
 
-
-playToogleButtons.forEach(function(elemento) {
-    elemento.addEventListener('click', function() {;
+playToogleButtons.forEach(function (elemento) {
+    elemento.addEventListener('click', function () {
+        ;
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(elemento.getAttribute('id'));
         id.push(idBoton);
         let bandaSeleccionada = bandas60.find(banda => banda.id === idBoton);
         console.log(bandaSeleccionada)
         let cancionesBanda = bandaSeleccionada.audio;
-        
+
         /*
             Selecciono la tarjeta, el ID y las canciones de la banda
             correspondiente a la tarjeta clickeada
@@ -96,7 +98,7 @@ playToogleButtons.forEach(function(elemento) {
 });
 
 
-nextButtons.forEach(function(elemento) {
+nextButtons.forEach(function (elemento) {
     elemento.addEventListener('click', function () {
         let tarjeta = elemento.closest('.tarjeta');
         let idBoton = parseInt(tarjeta.querySelector('.playToogle').getAttribute('id'));
@@ -121,11 +123,11 @@ nextButtons.forEach(function(elemento) {
     una manera de guardar en el local storage las tarjetas con like
 */
 
-const likes = document.querySelectorAll('.like');
+const likes = document.querySelectorAll('.glyph');
 let datosStorage = obtenerFavoritos();
 let estaClickeado = false;
 
-likes.forEach(function(like) {
+likes.forEach(function (like) {
     /*
         Arego evento de like, seleccionando la tarjeta y sus datos 
         correspondientes.
@@ -137,17 +139,18 @@ likes.forEach(function(like) {
             id: tarjeta.getAttribute('id'),
             img: tarjeta.querySelector('.imagen').getAttribute('src'),
         }
+        like.classList.toggle('rellenar');
 
         favearTarjeta(tarjeta, datos);
         guardarTarjetaStorage(datosStorage);
-        console.log(datosStorage)
     })
 })
 
-function favearTarjeta (tarjeta, datos) {
-/*
-    Esta funcion se encarga de favear la tarjeta
-*/
+
+function favearTarjeta(tarjeta, datos) {
+    /*
+        Esta funcion se encarga de favear la tarjeta
+    */
     let nombre = datos.nombre;
 
     if (tieneDuplicados(datosStorage, nombre)) {
@@ -181,4 +184,5 @@ function obtenerFavoritos() {
     return datosTarjetasFaveadas
 }
 
-export {mostrarScroll, id, favearTarjeta, tieneDuplicados, guardarTarjetaStorage, obtenerFavoritos, bandas60}
+
+export { mostrarScroll, id, favearTarjeta, tieneDuplicados, guardarTarjetaStorage, obtenerFavoritos, bandas60 }

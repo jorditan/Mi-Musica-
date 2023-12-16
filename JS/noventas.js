@@ -1,13 +1,15 @@
 import {
      ponerYSacarPausa, sacarPausa,
-     reproducirCancionAleatoria, cambiarBandaSiHaceFalta, sound
+     reproducirCancionAleatoria, cambiarBandaSiHaceFalta
 }
      from './utils.js';
 
-import { mostrarScroll, favearTarjeta, guardarTarjetaStorage }
+import {favearTarjeta, guardarTarjetaStorage, mostrarScroll }
      from './sesentas.js';
 
+const animado = document.querySelectorAll('.animado');
 window.addEventListener('scroll', mostrarScroll);
+     
 
 const bandas90 = [
      {
@@ -115,7 +117,6 @@ likes.forEach(function (like) {
 
           favearTarjeta(tarjeta, datos);
           guardarTarjetaStorage(datosTarjetasFaveadas);
-          console.log(datosTarjetasFaveadas)
      })
 })
 

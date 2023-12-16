@@ -78,7 +78,7 @@
 
 .infoTarjeta {
     display: flex;
-    width: auto;
+    width: 50%;
     justify-content: space-evenly;
     margin-top: 20px;
     flex-direction: column;
@@ -96,7 +96,7 @@
     align-items: center;
     height: auto;
     margin-bottom: 20px;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .fa-forward {
