@@ -6,6 +6,7 @@ function obtenerCancioncesBandas(bandas) {
 let estaSonando = false;
 const cancionesReproducidas = [];
 
+
 const sound = new Audio()
 
 function ponerYSacarPausa(elemento) {
@@ -48,7 +49,7 @@ function cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta) {
      /*
           Esta función se ejecuta en caso de clickear en una tarjeta distinta a la
           que se estaba reproduciendo previamente, cambiando  a las canciones
-          de la nueva banda
+          de la nueva banda en la seccion de décadas
      */
      let idViejo = id[id.length - 2];
      if (idViejo !== idBoton || sound.src == '') {
@@ -87,9 +88,24 @@ function imprimirNombreCancion(nombreCancion, tarjeta) { //Imprime el nombre de 
      elementoNombre.innerHTML = nombreCancion;
 }
 
+function cambiarBandaSiHaceFaltaGeneros(listaDeBandas, bandaActual, cancionesBanda, tarjeta) {
+     /*
+          Esta funcion se encarga de cambiar de banda al tocar el botón play en una 
+          tarjeta diferente a la última seleccionada. Es una función distinta a la anterior
+          porque esta se basa en el nombre de las bandas, no en su id.
+     */
+     let ultimaBandaReproducida = listaDeBandas[listaDeBandas.length -2 ];
+     console.log(ultimaBandaReproducida);
+     console.log(bandaActual);
+     if (ultimaBandaReproducida !== bandaActual || sound.src == "") {
+          reproducirCancionAleatoria(cancionesBanda, tarjeta);
+     }
+}
 
+
+/* ------------- GUARDAR APARIENCIA DEL LIKE EN EL LOCAL STORAGE ----------------- */
 
 export {
      obtenerCancioncesBandas, imprimirNombreCancion, generarDatoRandom, reproducirCancionAleatoria,
-     cambiarBandaSiHaceFalta, ponerYSacarPausa, sacarPausa, sacarPlay, sound
+     cambiarBandaSiHaceFalta, ponerYSacarPausa, sacarPausa, sacarPlay, sound, cambiarBandaSiHaceFaltaGeneros
 }

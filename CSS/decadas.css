@@ -85,6 +85,7 @@
 }
 
 .nombreBanda {
+    color: #303030;
     line-height: normal;
     font-size: 3rem;
     font-weight: bold;
@@ -116,6 +117,7 @@
 .fa-play:hover,
 .fa-forward:hover {
     transform: translateY(-10px);
+    cursor: pointer;
 }
 
 #nombreCancion {

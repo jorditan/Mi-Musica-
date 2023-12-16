@@ -24,36 +24,42 @@ const bandas60 = [
         audio: ['../Sound/If I Fell.mp3', '../Sound/Im Happy Just To Dance With You.mp3', '../Sound/Helter Skelter.mp3', '../Sound/Help!.mp3', '../Sound/Across The Universe.mp3'],
         genero: 'Rock',
         id: 1,
+        img: '../IMG/The beatles 60s (1).jpg'
     },
     {
         nombre: 'The Doors',
         audio: ['../Sound/LA Woman.mp3', '../Sound/Roadhouse Blues.mp3', '../Sound/Love Her Madly.mp3'],
         genero: 'Rock',
-        id: 2
+        id: 2,
+        img: 'https://img2.rtve.es/im/3854892/?w=360'
     },
     {
         nombre: 'Led Zeppelin',
         audio: ['../Sound/Baby Come On Home.mp3', '../Sound/Black Dog.mp3', '../Sound/Whole Lotta Love.mp3', '../Sound/All My Love.mp3'],
         genero: 'Rock',
-        id: 3
+        id: 3,
+        img: 'https://images.mubicdn.net/images/cast_member/53325/cache-291609-1513500009/image-w856.jpg?size=800x'
     },
     {
         nombre: 'Pink Floyd',
         audio: ['../Sound/Mother.mp3', '../Sound/High Hopes.mp3','../Sound/Fearless.mp3'],
         genero: 'Rock',
-        id: 4
+        id: 4,
+        img: 'https://imagenes.elpais.com/resizer/bFHKfxYxoTuDZZALfvLzvyWKR6k=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/ICQ4BXBFXZB35MTOUNZI7R3NHA.jpg'
     },
     {
         nombre: 'Vox Dei',
         audio: ['../Sound/Ritmo y Blues con Armónica.mp3', '../Sound/Presente.mp3', '../Sound/Profecías.mp3'],
         genero: 'Rock',
-        id: 5
+        id: 5,
+        img: '../IMG/vox dei (1).jpg'
     },
     {
         nombre: 'The Rolling Stones',
         audio: ['../Sound/Gimme Shelter.mp3', '../Sound/Wild Horses.mp3','../Sound/Fool To Cry.mp3'],
         genero: 'Rock',
-        id: 6
+        id: 6,
+        img: '../IMG/rollings.png'
     },
 ]
 

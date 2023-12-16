@@ -2,7 +2,7 @@ import { bandas60 } from './sesentas.js';
 import { bandas70 } from './setentas.js';
 import { bandas80 } from './ochentas.js';
 import { bandas90 } from './noventas.js';
-import { ponerYSacarPausa, sacarPausa, reproducirCancionAleatoria, cambiarBandaSiHaceFalta }
+import { ponerYSacarPausa, sacarPausa, reproducirCancionAleatoria, cambiarBandaSiHaceFalta, cambiarBandaSiHaceFaltaGeneros }
      from './utils.js';
 
 
@@ -29,6 +29,7 @@ bandasRock.forEach(banda => {
      const nombreCancion = document.createElement('p');
      const imagen = document.createElement('img');
      const botones = document.createElement('div');
+     const botonPlay = document.createElement('button');
 
      playButton.classList.add('fa-solid', 'fa-play', 'play');
      nextButton.classList.add('fa-solid', 'fa-forward');
@@ -39,41 +40,43 @@ bandasRock.forEach(banda => {
      contenedorImagen.classList.add('contenedorImagen');
      infoTarjeta.classList.add('infoTarjeta');
      tarjeta.classList.add('tarjeta');
+     botonPlay.classList.add('playToogle');
+     imagen.src = banda.img;
 
      tarjeta.setAttribute('id', `${contadorTarjetas}`);
+     tarjeta.dataset.nombreBanda = banda.nombre;
+     contenedorImagen.appendChild(imagen);
      playButton.setAttribute('id', `${contadorTarjetas}`);
      tarjeta.appendChild(contenedorImagen);
      tarjeta.appendChild(infoTarjeta);
      infoTarjeta.appendChild(nombreBanda);
      infoTarjeta.appendChild(nombreCancion);
      infoTarjeta.appendChild(botones);
-     botones.appendChild(playButton);
+     botones.appendChild(botonPlay);
+     botonPlay.appendChild(playButton);
      botones.appendChild(nextButton);
      contenedorTarjetas.appendChild(tarjeta);
      nombreBanda.textContent = banda.nombre;
      nombreCancion.textContent = 'Toca para reproducir...'
 })
 
-const playToogleButtons = document.querySelectorAll('.play');
+const playToogleButtons = document.querySelectorAll('.playToogle');
 const nextButtons = document.querySelectorAll('.fa-forward');
-let id =  [];
+let nombresBandasReproducidas = [];
 
 playToogleButtons.forEach(playButton => {
      playButton.addEventListener('click', function () {
           let tarjeta = playButton.closest('.tarjeta');
-          let idBoton = parseInt(playButton.getAttribute('id'));
-          id.push(idBoton);
-          let bandaSeleccionada = bandasRock.find(banda => banda.id === idBoton);
-          console.log(bandaSeleccionada);
+          const nombreBanda = tarjeta.dataset.nombreBanda;
+          let bandaSeleccionada = bandasRock.find(banda => banda.nombre === nombreBanda);
+          nombresBandasReproducidas.push(bandaSeleccionada.nombre);
           let cancionesBanda = bandaSeleccionada.audio;
-
           /*
-               Selecciono la tarjeta, el ID y las canciones de la banda
+               Selecciono la tarjeta, el nombre de la banda y las canciones de la banda
                correspondiente a la tarjeta clickeada
           */
-
           ponerYSacarPausa(playButton);
-          cambiarBandaSiHaceFalta(id, idBoton, cancionesBanda, tarjeta);
+          cambiarBandaSiHaceFaltaGeneros(nombresBandasReproducidas, nombreBanda, cancionesBanda, tarjeta);
      })
 })
 
@@ -81,12 +84,10 @@ playToogleButtons.forEach(playButton => {
 nextButtons.forEach(nextButton => {
      nextButton.addEventListener('click', function () {
           let tarjeta = nextButton.closest('.tarjeta');
-          let idBoton = parseInt(tarjeta.querySelector('.play').getAttribute('id'));
-          id.push(idBoton);
-          let bandaSeleccionada = bandasRock.find(banda => banda.id === idBoton);
-          console.log(bandaSeleccionada);
+          const nombreBanda = tarjeta.dataset.nombreBanda;
+          nombresBandasReproducidas.push(nombreBanda);
+          let bandaSeleccionada = bandasRock.find(banda => banda.nombre === nombreBanda);
           let cancionesBanda = bandaSeleccionada.audio;
-     
           /*
                Selecciono la tarjeta, el ID y las canciones de la banda
                correspondiente a la tarjeta clickeada
