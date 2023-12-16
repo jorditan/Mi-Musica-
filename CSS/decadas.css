@@ -159,6 +159,7 @@
 @media screen and (max-width:915px){
     .tarjeta {
         width: 60%;
+        height: 12em;
     }
     .tarjetasCanciones {
         height: auto;
